@@ -1,5 +1,10 @@
 PokemonLogoGraphics: INCBIN "gfx/title/pokemon_logo.2bpp"
-FontGraphics:: INCBIN "gfx/font/font.1bpp"
+FontGraphics:: 
+IF DEF(_ROMAN)
+INCBIN "gfx/font/font_roman.1bpp"
+ELSE
+INCBIN "gfx/font/font.1bpp"
+ENDC
 FontGraphicsEnd::
 
 ABTiles: INCBIN "gfx/font/AB.2bpp"
