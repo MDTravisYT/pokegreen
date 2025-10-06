@@ -51,4 +51,14 @@ EndNPCMovementScript::
 	farjp _EndNPCMovementScript
 
 DebugPressedOrHeldB:: ; dummy debug leftover
+IF DEF(_DEBUG)
+	ld a, [wStatusFlags6]
+	bit BIT_DEBUG_MODE, a
+	ret z
+	ldh a, [hJoyHeld]
+	bit BIT_B_BUTTON, a
+	ret nz
+	ldh a, [hJoyPressed]
+	bit BIT_B_BUTTON, a
+ENDC
 	ret

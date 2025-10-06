@@ -17,9 +17,9 @@ UncompressMonSprite::
 ; $9A ≤ index:             bank $D ("Pics 5")
 	ld a, [wCurPartySpecies]
 	ld b, a
-	cp MEW
-	ld a, BANK(MewPicFront)
-	jr z, .GotBank
+;	cp MEW
+;	ld a, BANK(MewPicFront)
+;	jr z, .GotBank
 	ld a, b
 	cp TANGELA + 1
 	ld a, BANK("Pics 1")
