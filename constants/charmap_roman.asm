@@ -119,6 +119,8 @@ DEF	_ch = $61
 DEF	_ts = $62
 DEF	_ye = $64
 DEF	_vy = $65
+DEF	_hu = $6A
+DEF	_si = $6B
 
 	charmap "<NULL>",   $00
 
@@ -260,6 +262,10 @@ DEF	_vy = $65
 
 ; Actual characters (from gfx/font/font.png)
 
+
+	charmap "<X>",	$e8
+	charmap "<SI>",	$80+_si
+
 	charmap "ア",	$80+__a
 	charmap "イ",	$80+__i
 	charmap "ウ",	$80+__u
@@ -271,13 +277,13 @@ DEF	_vy = $65
 	charmap "ケ",	$80+_ke
 	charmap "コ",	$80+_ko
 	charmap "サ",	$80+_sa
-	charmap "シ",	$e8			;$80+_sh;,__i
+	charmap "シ",	$80+_si		;$80+_sh,__i
 	charmap "ス",	$80+_su
 	charmap "セ",	$80+_se
 	charmap "ソ",	$80+_so
 	charmap "タ",	$80+_ta
-	charmap "チ",	$e8			;$80+_ch;,__i
-	charmap "ツ",	$e8			;$80+_ts;,__u
+	charmap "チ",	$80+_ti			;$80+_ch;,__i
+	charmap "ツ",	$80+_tu			;$80+_ts;,__u
 	charmap "テ",	$80+_te
 	charmap "ト",	$80+_to
 	charmap "ナ",	$80+_na
@@ -306,11 +312,11 @@ DEF	_vy = $65
 	charmap "ワ",	$80+_wa
 	charmap "ヲ",	$80+_wo
 	charmap "ン",	$80+__n
-	charmap "ッ",	$e8
-	charmap "ャ",	$e8
-	charmap "ュ",	$e8
-	charmap "ョ",	$e8
-	charmap "ィ",	$e8
+	charmap "ッ",	$80+_tu
+	charmap "ャ",	$80+_ya
+	charmap "ュ",	$80+_yu
+	charmap "ョ",	$80+_yo
+	charmap "ィ",	$80+__i
 
 	charmap "あ",	$80+__a
 	charmap "い",	$80+__i
@@ -323,13 +329,13 @@ DEF	_vy = $65
 	charmap "け",	$80+_ke
 	charmap "こ",	$80+_ko
 	charmap "さ",	$80+_sa
-	charmap "し",	$e8			;$80+_sh;,__i
+	charmap "し",	$80+_si			;$80+_sh;,__i
 	charmap "す",	$80+_su
 	charmap "せ",	$80+_se
 	charmap "そ",	$80+_so
 	charmap "た",	$80+_ta
-	charmap "ち",	$e8			;$80+_ch;,__i
-	charmap "つ",	$e8			;$80+_ts;,__u
+	charmap "ち",	$80+_ti			;$80+_ch;,__i
+	charmap "つ",	$80+_tu			;$80+_ts;,__u
 	charmap "て",	$80+_te
 	charmap "と",	$80+_to
 	charmap "な",	$80+_na
@@ -339,7 +345,7 @@ DEF	_vy = $65
 	charmap "の",	$80+_no
 	charmap "は",	$80+_ha
 	charmap "ひ",	$80+_hi
-	charmap "ふ",	$80+_fu
+	charmap "ふ",	$80+_hu
 	charmap "へ",	$80+_he
 	charmap "ほ",	$80+_ho
 	charmap "ま",	$80+_ma
@@ -359,9 +365,9 @@ DEF	_vy = $65
 	charmap "を",	$80+_wo
 	charmap "ん",	$80+__n
 	charmap "っ",	$e8
-	charmap "ゃ",	$e8
-	charmap "ゅ",	$e8
-	charmap "ょ",	$e8
+	charmap "ゃ",	$80+__a
+	charmap "ゅ",	$80+__u
+	charmap "ょ",	$80+__o
 
 	charmap "ー",       $e3
 	charmap "゜",       $e4 ; handakuten

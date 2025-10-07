@@ -107,7 +107,7 @@ $(pokegreen_obj):      RGBASMFLAGS += -D _GREEN -D _REV0
 $(pokered11_obj):      RGBASMFLAGS += -D _RED -D _REV1
 $(pokegreen11_obj):    RGBASMFLAGS += -D _GREEN -D _REV1
 $(pokegreen_debug_obj): RGBASMFLAGS += -D _GREEN -D _REV0 -D _DEBUG
-$(pokegreen_roman_obj): RGBASMFLAGS += -D _GREEN -D _REV0 -D _ROMAN
+$(pokegreen_roman_obj): RGBASMFLAGS += -D _GREEN -D _REV0 -D _ROMAN -D _DEBUG
 $(pokered11_vc_obj):   RGBASMFLAGS += -D _RED -D _REV1 -D _RED_VC
 $(pokegreen11_vc_obj): RGBASMFLAGS += -D _GREEN -D _REV1 -D _GREEN_VC
 
