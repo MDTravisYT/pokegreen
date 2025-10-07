@@ -78,23 +78,26 @@ PlaceNextChar::
 .NotLine
 
 ; Check against a dictionary
-	dict "<NULL>",    NullChar
-	dict "<SCROLL>",  _ContTextNoPause
-	dict "<_CONT>",   _ContText
-	dict "<PARA>",    Paragraph
-	dict "<PLAYER>",  PrintPlayerName
-	dict "<RIVAL>",   PrintRivalName
-	dict "#",         PlacePOKe
-	dict "<PC>",      PCChar
-	dict "<ROCKET>",  RocketChar
-	dict "<TM>",      TMChar
-	dict "<TRAINER>", TrainerChar
-	dict "<CONT>",    ContText
-	dict "<⋯>",      SixDotsChar
-	dict "<DONE>",    DoneText
-	dict "<PROMPT>",  PromptText
-	dict "<TARGET>",  PlaceMoveTargetsName
-	dict "<USER>",    PlaceMoveUsersName
+	dict "<NULL>",		NullChar
+	dict "<SCROLL>",	_ContTextNoPause
+	dict "<_CONT>",		_ContText
+	dict "<PARA>",		Paragraph
+	dict "<PLAYER>",	PrintPlayerName
+	dict "<RIVAL>",		PrintRivalName
+	dict "#",			PlacePOKe
+	dict "<PC>",		PCChar
+	dict "<ROCKET>",	RocketChar
+	dict "<TM>",		TMChar
+	dict "<TRAINER>",	TrainerChar
+	dict "<CONT>",		ContText
+	dict "<⋯>",			SixDotsChar
+	dict "<DONE>",		DoneText
+	dict "<PROMPT>",	PromptText
+	dict "<TARGET>",	PlaceMoveTargetsName
+	dict "<USER>",		PlaceMoveUsersName
+	dict "し",			Romaji_SHI
+	dict "ち",			Romaji_CHI
+	dict "つ",			Romaji_TSU
 
 ; Japanese diacritic symbols. The code up to .KanaCharacter does not appear
 ; to be used, since the naming screen characters are loaded as tile indexes,
@@ -169,21 +172,21 @@ NextChar::
 	inc de
 	jp PlaceNextChar
 
-NullChar::
-	ld b, h
-	ld c, l
-	pop hl
-	; A "<NULL>" character in a printed string
+NullChar::								;	MDT: don't need this
+;	ld b, h
+;	ld c, l
+;	pop hl
+;	; A "<NULL>" character in a printed string
 	; displays an error message with the current value
 	; of hTextID in decimal format.
 	; This is a debugging leftover.
-	ld de, TextIDErrorText
-	dec de
+;	ld de, TextIDErrorText
+;	dec de
 	ret
 
 TextIDErrorText:: ; "[hTextID] ERROR."
-	text_decimal hTextID, 1, 2
-	text "エラー"
+;	text_decimal hTextID, 1, 2			;	MDT: don't need this
+;	text "エラー"							;	MDT: don't need this
 	done
 
 MACRO print_name
@@ -195,12 +198,15 @@ ENDM
 PrintPlayerName:: print_name wPlayerName
 PrintRivalName::  print_name wRivalName
 
-TrainerChar:: print_name TrainerCharText
-TMChar::      print_name TMCharText
-PCChar::      print_name PCCharText
-RocketChar::  print_name RocketCharText
-PlacePOKe::   print_name PlacePOKeText
-SixDotsChar:: print_name SixDotsCharText
+TrainerChar::	print_name TrainerCharText
+TMChar::     	print_name TMCharText
+PCChar::     	print_name PCCharText
+RocketChar:: 	print_name RocketCharText
+PlacePOKe::  	print_name PlacePOKeText
+SixDotsChar::	print_name SixDotsCharText
+Romaji_SHI::	print_name Romaji_SHIText
+Romaji_CHI::	print_name Romaji_CHIText
+Romaji_TSU::	print_name Romaji_TSUText
 
 PlaceMoveTargetsName::
 	ldh a, [hWhoseTurn]
@@ -234,13 +240,16 @@ PlaceCommandCharacter::
 	inc de
 	jp PlaceNextChar
 
-TMCharText::      db "わざマシン@"
-TrainerCharText:: db "トレーナー@"
-PCCharText::      db "パソコン@"
-RocketCharText::  db "ロケットだん@"
-PlacePOKeText::   db "ポケモン@"
-SixDotsCharText:: db "⋯⋯@"
-EnemyText::       db "てきの　@"
+TMCharText::     	db "わざマシン@"
+TrainerCharText::	db "トレーナー@"
+PCCharText::     	db "パソコン@"
+RocketCharText:: 	db "ロケットだん@"
+PlacePOKeText::  	db "ポケモン@"
+SixDotsCharText::	db "⋯⋯@"
+EnemyText::      	db "てきの　@"
+Romaji_SHIText::	db $80+_sh,$80+__i,"@"
+Romaji_CHIText::	db $80+_ch,$80+__i,"@"
+Romaji_TSUText::	db $80+_ts,$80+__u,"@"
 
 ContText::
 	push de

@@ -277,13 +277,13 @@ DEF	_si = $6B
 	charmap "ケ",	$80+_ke
 	charmap "コ",	$80+_ko
 	charmap "サ",	$80+_sa
-	charmap "シ",	$80+_si		;$80+_sh,__i
+	charmap "シ",	$4a			;	macro char: Romaji_SHI
 	charmap "ス",	$80+_su
 	charmap "セ",	$80+_se
 	charmap "ソ",	$80+_so
 	charmap "タ",	$80+_ta
-	charmap "チ",	$80+_ti			;$80+_ch;,__i
-	charmap "ツ",	$80+_tu			;$80+_ts;,__u
+	charmap "チ",	$49			;	macro char: Romaji_CHI
+	charmap "ツ",	$48			;	macro char: Romaji_TSU
 	charmap "テ",	$80+_te
 	charmap "ト",	$80+_to
 	charmap "ナ",	$80+_na
@@ -329,13 +329,13 @@ DEF	_si = $6B
 	charmap "け",	$80+_ke
 	charmap "こ",	$80+_ko
 	charmap "さ",	$80+_sa
-	charmap "し",	$80+_si			;$80+_sh;,__i
+	charmap "し",	$4a			;	macro char: Romaji_SHI
 	charmap "す",	$80+_su
 	charmap "せ",	$80+_se
 	charmap "そ",	$80+_so
 	charmap "た",	$80+_ta
-	charmap "ち",	$80+_ti			;$80+_ch;,__i
-	charmap "つ",	$80+_tu			;$80+_ts;,__u
+	charmap "ち",	$49			;	macro char: Romaji_CHI
+	charmap "つ",	$48			;	macro char: Romaji_TSU
 	charmap "て",	$80+_te
 	charmap "と",	$80+_to
 	charmap "な",	$80+_na
@@ -365,9 +365,9 @@ DEF	_si = $6B
 	charmap "を",	$80+_wo
 	charmap "ん",	$80+__n
 	charmap "っ",	$e8
-	charmap "ゃ",	$80+__a
-	charmap "ゅ",	$80+__u
-	charmap "ょ",	$80+__o
+	charmap "ゃ",	$e8
+	charmap "ゅ",	$e8
+	charmap "ょ",	$e8
 
 	charmap "ー",       $e3
 	charmap "゜",       $e4 ; handakuten

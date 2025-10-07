@@ -1,9 +1,9 @@
-PokemonLogoGraphics: INCBIN "gfx/title/pokemon_logo.2bpp"
-FontGraphics:: 
 IF DEF(_ROMAN)
-INCBIN "gfx/font/font_roman.1bpp"
+PokemonLogoGraphics:	INCBIN "gfx/title/pokemon_logo_roman.2bpp"
+FontGraphics:: 			INCBIN "gfx/font/font_roman.1bpp"
 ELSE
-INCBIN "gfx/font/font.1bpp"
+PokemonLogoGraphics:	INCBIN "gfx/title/pokemon_logo.2bpp"
+FontGraphics:: 			INCBIN "gfx/font/font.1bpp"
 ENDC
 FontGraphicsEnd::
 
