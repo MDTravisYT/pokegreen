@@ -144,38 +144,38 @@ DEF	_vy = $65
 	charmap "ベ",	$80+_be
 	charmap "ボ",	$80+_bo
 
-	charmap "が",	$e8
-	charmap "ぎ",	$e8
-	charmap "ぐ",	$e8
-	charmap "げ",	$e8
-	charmap "ご",	$e8
-	charmap "ざ",	$e8
-	charmap "じ",	$e8
-	charmap "ず",	$e8
-	charmap "ぜ",	$e8
-	charmap "ぞ",	$e8
-	charmap "だ",	$e8
-	charmap "ぢ",	$e8
-	charmap "づ",	$e8
-	charmap "で",	$e8
-	charmap "ど",	$e8
+	charmap "が",	$80+_ga
+	charmap "ぎ",	$80+_gi
+	charmap "ぐ",	$80+_gu
+	charmap "げ",	$80+_ge
+	charmap "ご",	$80+_go
+	charmap "ざ",	$80+_za
+	charmap "じ",	$80+_ji
+	charmap "ず",	$80+_zu
+	charmap "ぜ",	$80+_ze
+	charmap "ぞ",	$80+_zo
+	charmap "だ",	$80+_da
+	charmap "ぢ",	$80+_ji
+	charmap "づ",	$80+_zu
+	charmap "で",	$80+_de
+	charmap "ど",	$80+_do
 
-	charmap "ば",	$e8
-	charmap "び",	$e8
-	charmap "ぶ",	$e8
-	charmap "べ",	$e8
-	charmap "ぼ",	$e8
+	charmap "ば",	$80+_ba
+	charmap "び",	$80+_bi
+	charmap "ぶ",	$80+_bu
+	charmap "べ",	$80+_be
+	charmap "ぼ",	$80+_bo
 
 	charmap "パ",	$80+_pa
 	charmap "ピ",	$80+_pi
 	charmap "プ",	$80+_pu
 	charmap "ペ",	$80+_pe
 	charmap "ポ",	$80+_po
-	charmap "ぱ",	$e8
-	charmap "ぴ",	$e8
-	charmap "ぷ",	$e8
-	charmap "ぺ",	$e8
-	charmap "ぽ",	$e8
+	charmap "ぱ",	$80+_pa
+	charmap "ぴ",	$80+_pi
+	charmap "ぷ",	$80+_pu
+	charmap "ぺ",	$80+_pe
+	charmap "ぽ",	$80+_po
 
 	charmap "<_CONT>",   $4b ; implements "<CONT>"
 	charmap "<SCROLL>",  $4c
@@ -271,13 +271,13 @@ DEF	_vy = $65
 	charmap "ケ",	$80+_ke
 	charmap "コ",	$80+_ko
 	charmap "サ",	$80+_sa
-	charmap "シ",	$80+_sh;,__i
+	charmap "シ",	$e8			;$80+_sh;,__i
 	charmap "ス",	$80+_su
 	charmap "セ",	$80+_se
 	charmap "ソ",	$80+_so
 	charmap "タ",	$80+_ta
-	charmap "チ",	$80+_ch;,__i
-	charmap "ツ",	$80+_ts;,__u
+	charmap "チ",	$e8			;$80+_ch;,__i
+	charmap "ツ",	$e8			;$80+_ts;,__u
 	charmap "テ",	$80+_te
 	charmap "ト",	$80+_to
 	charmap "ナ",	$80+_na
@@ -312,52 +312,52 @@ DEF	_vy = $65
 	charmap "ョ",	$e8
 	charmap "ィ",	$e8
 
-	charmap "あ",	$e8
-	charmap "い",	$e8
-	charmap "う",	$e8
-	charmap "え",	$e8
-	charmap "お",	$e8
-	charmap "か",	$e8
-	charmap "き",	$e8
-	charmap "く",	$e8
-	charmap "け",	$e8
-	charmap "こ",	$e8
-	charmap "さ",	$e8
-	charmap "し",	$e8
-	charmap "す",	$e8
-	charmap "せ",	$e8
-	charmap "そ",	$e8
-	charmap "た",	$e8
-	charmap "ち",	$e8
-	charmap "つ",	$e8
-	charmap "て",	$e8
-	charmap "と",	$e8
-	charmap "な",	$e8
-	charmap "に",	$e8
-	charmap "ぬ",	$e8
-	charmap "ね",	$e8
-	charmap "の",	$e8
-	charmap "は",	$e8
-	charmap "ひ",	$e8
-	charmap "ふ",	$e8
-	charmap "へ",	$e8
-	charmap "ほ",	$e8
-	charmap "ま",	$e8
-	charmap "み",	$e8
-	charmap "む",	$e8
-	charmap "め",	$e8
-	charmap "も",	$e8
-	charmap "や",	$e8
-	charmap "ゆ",	$e8
-	charmap "よ",	$e8
-	charmap "ら",	$e8
-	charmap "り",	$e8
-	charmap "る",	$e8
-	charmap "れ",	$e8
-	charmap "ろ",	$e8
-	charmap "わ",	$e8
-	charmap "を",	$e8
-	charmap "ん",	$e8
+	charmap "あ",	$80+__a
+	charmap "い",	$80+__i
+	charmap "う",	$80+__u
+	charmap "え",	$80+__e
+	charmap "お",	$80+__o
+	charmap "か",	$80+_ka
+	charmap "き",	$80+_ki
+	charmap "く",	$80+_ku
+	charmap "け",	$80+_ke
+	charmap "こ",	$80+_ko
+	charmap "さ",	$80+_sa
+	charmap "し",	$e8			;$80+_sh;,__i
+	charmap "す",	$80+_su
+	charmap "せ",	$80+_se
+	charmap "そ",	$80+_so
+	charmap "た",	$80+_ta
+	charmap "ち",	$e8			;$80+_ch;,__i
+	charmap "つ",	$e8			;$80+_ts;,__u
+	charmap "て",	$80+_te
+	charmap "と",	$80+_to
+	charmap "な",	$80+_na
+	charmap "に",	$80+_ni
+	charmap "ぬ",	$80+_nu
+	charmap "ね",	$80+_ne
+	charmap "の",	$80+_no
+	charmap "は",	$80+_ha
+	charmap "ひ",	$80+_hi
+	charmap "ふ",	$80+_fu
+	charmap "へ",	$80+_he
+	charmap "ほ",	$80+_ho
+	charmap "ま",	$80+_ma
+	charmap "み",	$80+_mi
+	charmap "む",	$80+_mu
+	charmap "め",	$80+_me
+	charmap "も",	$80+_mo
+	charmap "や",	$80+_ya
+	charmap "ゆ",	$80+_yu
+	charmap "よ",	$80+_yo
+	charmap "ら",	$80+_ra
+	charmap "り",	$80+_ri
+	charmap "る",	$80+_ru
+	charmap "れ",	$80+_re
+	charmap "ろ",	$80+_ro
+	charmap "わ",	$80+_wa
+	charmap "を",	$80+_wo
+	charmap "ん",	$80+__n
 	charmap "っ",	$e8
 	charmap "ゃ",	$e8
 	charmap "ゅ",	$e8
