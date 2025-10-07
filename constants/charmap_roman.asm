@@ -313,10 +313,10 @@ DEF	_si = $6B
 	charmap "ヲ",	$80+_wo
 	charmap "ン",	$80+__n
 	charmap "ッ",	$e8			;	you'll be a pain to parse...
-	charmap "ャ",	$80+_ya
-	charmap "ュ",	$80+_yu
-	charmap "ョ",	$80+_yo
-	charmap "ィ",	$80+__i
+	charmap "ャ",	$e8
+	charmap "ュ",	$e8
+	charmap "ョ",	$e8
+	charmap "ィ",	$e8
 
 	charmap "あ",	$80+__a
 	charmap "い",	$80+__i
