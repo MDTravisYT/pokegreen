@@ -381,9 +381,9 @@ DEF	_si = $6B
 	charmap "ップ",	$80+__p,$80+_pu
 	charmap "ッペ",	$80+__p,$80+_pe
 	charmap "ッポ",	$80+__p,$80+_po
-	charmap "ッ　",	$7A,$e3			;	"- " dash and space
-	charmap "ッ！",	$7A,$e7			;	"-!"
-	charmap "ッ？",	$7A,$e6			;	"-?"
+	charmap "ッ　",	$e3,$7f			;	"- " dash and space
+	charmap "ッ！",	$e3,$e7			;	"-!"
+	charmap "ッ？",	$e3,$e6			;	"-?"
 
 
 	charmap "あ",	$80+__a
@@ -497,9 +497,9 @@ DEF	_si = $6B
 	charmap "っぷ",	$80+__p,$80+_pu
 	charmap "っぺ",	$80+__p,$80+_pe
 	charmap "っぽ",	$80+__p,$80+_po
-	charmap "っ　",	$7A,$e3			;	"- " dash and space
-	charmap "っ！",	$7A,$e7			;	"-!"
-	charmap "っ？",	$7A,$e6			;	"-?"
+	charmap "っ　",	$e3,$7f			;	"- " dash and space
+	charmap "っ！",	$e3,$e7			;	"-!"
+	charmap "っ？",	$e3,$e6			;	"-?"
 
 	charmap "きゃ",	$80+_ky,$80+__a
 	charmap "しゃ",	$80+_sh,$80+__a
