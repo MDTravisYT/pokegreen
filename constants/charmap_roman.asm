@@ -63,7 +63,7 @@ DEF	_ri = $18
 DEF	_ru = $28
 DEF	_re = $38
 DEF	_ro = $48
-DEF	_ro = $58
+DEF	_ry = $58
 
 DEF	_wa = $09
 DEF	_wi = $19
@@ -368,6 +368,111 @@ DEF	_si = $6B
 	charmap "ゃ",	$e8
 	charmap "ゅ",	$e8
 	charmap "ょ",	$e8
+
+	charmap "きゃ",	$80+_ky,$80+__a
+	charmap "しゃ",	$80+_sh,$80+__a
+	charmap "ちゃ",	$80+_ch,$80+__a
+	charmap "にゃ",	$80+_ny,$80+__a
+	charmap "ひゃ",	$80+_hy,$80+__a
+	charmap "みゃ",	$80+_my,$80+__a
+	charmap "りゃ",	$80+_ry,$80+__a
+	charmap "ぎゃ",	$80+_gy,$80+__a
+	charmap "じゃ",	$80+_ja
+	charmap "ぢゃ",	$80+_ja
+	charmap "びゃ",	$80+_by,$80+__a
+	charmap "ぴゃ",	$80+_py,$80+__a
+	charmap "きゅ",	$80+_ky,$80+__u
+	charmap "しゅ",	$80+_sh,$80+__u
+	charmap "ちゅ",	$80+_ch,$80+__u
+	charmap "にゅ",	$80+_ny,$80+__u
+	charmap "ひゅ",	$80+_hy,$80+__u
+	charmap "みゅ",	$80+_my,$80+__u
+	charmap "りゅ",	$80+_ry,$80+__u
+	charmap "ぎゅ",	$80+_gy,$80+__u
+	charmap "じゅ",	$80+_ju
+	charmap "ぢゅ",	$80+_ju
+	charmap "びゅ",	$80+_by,$80+__u
+	charmap "ぴゅ",	$80+_py,$80+__u
+	charmap "きょ",	$80+_ky,$80+__o
+	charmap "しょ",	$80+_sh,$80+__o
+	charmap "ちょ",	$80+_ch,$80+__o
+	charmap "にょ",	$80+_ny,$80+__o
+	charmap "ひょ",	$80+_hy,$80+__o
+	charmap "みょ",	$80+_my,$80+__o
+	charmap "りょ",	$80+_ry,$80+__o
+	charmap "ぎょ",	$80+_gy,$80+__o
+	charmap "じょ",	$80+_jo
+	charmap "ぢょ",	$80+_jo
+	charmap "びょ",	$80+_by,$80+__o
+	charmap "ぴょ",	$80+_py,$80+__o
+	
+	charmap "キャ",	$80+_ky,$80+__a
+	charmap "シャ",	$80+_sh,$80+__a
+	charmap "チャ",	$80+_ch,$80+__a
+	charmap "ニャ",	$80+_ny,$80+__a
+	charmap "ヒャ", 	$80+_hy,$80+__a 
+	charmap "ミャ", 	$80+_my,$80+__a 
+	charmap "リャ", 	$80+_ry,$80+__a 
+	charmap "ギャ",	$80+_gy,$80+__a
+	charmap "ジャ",	$80+_ja
+	charmap "ヂャ",	$80+_ja
+	charmap "ビャ",	$80+_by,$80+__a
+	charmap "ピャ", 	$80+_py,$80+__a 
+	charmap "キュ", 	$80+_ky,$80+__u 
+	charmap "シュ",	$80+_sh,$80+__u
+	charmap "チュ", 	$80+_ch,$80+__u 
+	charmap "ニュ", 	$80+_ny,$80+__u 
+	charmap "ヒュ", 	$80+_hy,$80+__u 
+	charmap "ミュ", 	$80+_my,$80+__u 
+	charmap "リュ", 	$80+_ry,$80+__u 
+	charmap "ギュ",	$80+_gy,$80+__u
+	charmap "ジュ",	$80+_ju
+	charmap "ヂュ",	$80+_ju
+	charmap "ビュ", 	$80+_by,$80+__u 
+	charmap "ピュ", 	$80+_py,$80+__u 
+;	charmap "キョ", 	$80+_ky,$80+__o 
+;	charmap "ショ",	$80+_sh,$80+__o
+;	charmap "チョ", 	$80+_ch,$80+__o 
+;	charmap "ニョ", 	$80+_ny,$80+__o 
+;	charmap "ヒョ", 	$80+_hy,$80+__o 
+;	charmap "ミョ", 	$80+_my,$80+__o 
+;	charmap "リョ", 	$80+_ry,$80+__o 
+;	charmap "ギョ",	$80+_gy,$80+__o
+;	charmap "ジョ",	$80+_jo
+;	charmap "ヂョ", 	$80+_jo 
+;	charmap "ビョ", 	$80+_by,$80+__o 
+;	charmap "ピョ", 	$80+_py,$80+__o 
+	
+;	charmap "ヴァ",	$80+_va
+;	charmap "ツァ",	$80+_ts,$80+__a
+;	charmap "ファ",	$80+_fa
+;	charmap "ヴャ",	$80+_vy,$80+__a
+;	charmap "ウィ",	$80+_wi
+;	charmap "ヴィ",	$80+_vi
+;	charmap "ティ",	$80+_ti
+;	charmap "ディ",	$80+_di
+;	charmap "ツィ",	$80+_ts,$80+__i
+;	charmap "フィ",	$80+_fi
+;	charmap "ヴ",	$80+_vu
+;	charmap "トゥ",	$80+_tu
+;	charmap "ドゥ",	$80+_du
+;	charmap "ヴュ",	$80+_vy,$80+__u
+;	charmap "テュ",	$80+_ty,$80+__u
+;	charmap "デュ",	$80+_dy,$80+__u
+;	charmap "フュ",	$80+_fy,$80+__u
+;	charmap "イェ",	$80+_ye
+;	charmap "ウェ",	$80+_we
+;	charmap "ヴェ",	$80+_ve
+;	charmap "シェ",	$80+_sh,$80+__e
+;	charmap "ジェ",	$80+_je
+;	charmap "チェ",	$80+_ch,$80+__e
+;	charmap "ツェ",	$80+_ts,$80+__e
+;	charmap "フェ",	$80+_fe
+;	charmap "ウォ",	$80+_wo
+;	charmap "ヴォ",	$80+_vo
+;	charmap "ツォ",	$80+_ts,$80+__o
+;	charmap "フォ",	$80+_fo
+;	charmap "ヴョ",	$80+_vy,$80+__o
 
 	charmap "ー",       $e3
 	charmap "゜",       $e4 ; handakuten

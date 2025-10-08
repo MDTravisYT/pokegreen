@@ -19,7 +19,7 @@ DebugNewGameParty:
 	; From https://web.archive.org/web/20000607152840/http://pocket.ign.com/news/14973.html
 	db EXEGGUTOR, 90
 IF DEF(_DEBUG)
-	db MEW, 5
+	db NIDORAN_F, 5
 ELSE
 	db MEW, 20
 ENDC
