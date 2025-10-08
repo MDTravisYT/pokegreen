@@ -5,7 +5,9 @@ roms := \
 	pokegreen11.gb \
 	pokegreen_debug.gb \
 	pokegreen_romaji_db.gb \
-	pokegreen_romaji.gb
+	pokegreen_romaji.gb \
+	pokered_romaji_db.gb \
+	pokered_romaji.gb
 patches := \
 	pokered11.patch \
 	pokegreen11.patch
@@ -27,6 +29,8 @@ pokegreen11_obj    := $(rom_obj:.o=_green11.o)
 pokegreen_debug_obj    := $(rom_obj:.o=_green_debug.o)
 pokegreen_romaji_db_obj    := $(rom_obj:.o=_green_romaji_db.o)
 pokegreen_romaji_obj    := $(rom_obj:.o=_green_romaji.o)
+pokered_romaji_db_obj    := $(rom_obj:.o=_red_romaji_db.o)
+pokered_romaji_obj    := $(rom_obj:.o=_red_romaji.o)
 pokered11_vc_obj   := $(rom_obj:.o=_red11_vc.o)
 pokegreen11_vc_obj := $(rom_obj:.o=_green11_vc.o)
 
@@ -52,7 +56,7 @@ RGBLINK ?= $(RGBDS)rgblink
 .SECONDEXPANSION:
 .PRECIOUS:
 .SECONDARY:
-.PHONY: all red green red11 green11 green_debug green_romaji_db green_romaji clean tidy compare tools
+.PHONY: all red green red11 green11 green_debug green_romaji_db green_romaji red_romaji_db red_romaji clean tidy compare tools
 
 all: $(roms)
 red:        pokered.gb
@@ -62,6 +66,8 @@ green11:    pokegreen11.gb
 green_debug:pokegreen_debug.gb
 green_romaji_db:pokegreen_romaji_db.gb
 green_romaji:pokegreen_romaji.gb
+red_romaji_db:pokered_romaji_db.gb
+red_romaji:pokered_romaji.gb
 red11_vc:   pokered11.patch
 green11_vc: pokegreen11.patch
 
@@ -88,6 +94,8 @@ tidy:
 	      $(pokegreen_debug_obj) \
 	      $(pokegreen_romaji_db_obj) \
 	      $(pokegreen_romaji_obj) \
+	      $(pokered_romaji_db_obj) \
+	      $(pokered_romaji_obj) \
 	      $(pokered11_vc_obj) \
 	      $(pokegreen11_vc_obj) \
 	      rgbdscheck.o
@@ -113,6 +121,8 @@ $(pokegreen11_obj):    RGBASMFLAGS += -D _GREEN -D _REV1
 $(pokegreen_debug_obj): RGBASMFLAGS += -D _GREEN -D _REV0 -D _DEBUG
 $(pokegreen_romaji_db_obj): RGBASMFLAGS += -D _GREEN -D _REV0 -D _ROMAN -D _DEBUG
 $(pokegreen_romaji_obj): RGBASMFLAGS += -D _GREEN -D _REV0 -D _ROMAN
+$(pokered_romaji_db_obj): RGBASMFLAGS += -D _RED -D _REV0 -D _ROMAN -D _DEBUG
+$(pokered_romaji_obj): RGBASMFLAGS += -D _RED -D _REV0 -D _ROMAN
 $(pokered11_vc_obj):   RGBASMFLAGS += -D _RED -D _REV1 -D _RED_VC
 $(pokegreen11_vc_obj): RGBASMFLAGS += -D _GREEN -D _REV1 -D _GREEN_VC
 
@@ -145,6 +155,8 @@ $(foreach obj, $(pokegreen11_obj), $(eval $(call DEP,$(obj),$(obj:_green11.o=.as
 $(foreach obj, $(pokegreen_debug_obj), $(eval $(call DEP,$(obj),$(obj:_green_debug.o=.asm))))
 $(foreach obj, $(pokegreen_romaji_db_obj), $(eval $(call DEP,$(obj),$(obj:_green_romaji_db.o=.asm))))
 $(foreach obj, $(pokegreen_romaji_obj), $(eval $(call DEP,$(obj),$(obj:_green_romaji.o=.asm))))
+$(foreach obj, $(pokered_romaji_db_obj), $(eval $(call DEP,$(obj),$(obj:_red_romaji_db.o=.asm))))
+$(foreach obj, $(pokered_romaji_obj), $(eval $(call DEP,$(obj),$(obj:_red_romaji.o=.asm))))
 $(foreach obj, $(pokered11_vc_obj), $(eval $(call DEP,$(obj),$(obj:_red11_vc.o=.asm))))
 $(foreach obj, $(pokegreen11_vc_obj), $(eval $(call DEP,$(obj),$(obj:_green11_vc.o=.asm))))
 
@@ -158,6 +170,8 @@ pokegreen11_pad    = 0x00
 pokegreen_debug_pad= 0xff
 pokegreen_romaji_db_pad= 0xff
 pokegreen_romaji_pad= 0xff
+pokered_romaji_db_pad= 0xff
+pokered_romaji_pad= 0xff
 pokered11_vc_pad   = 0x00
 pokegreen11_vc_pad = 0x00
 
@@ -168,6 +182,8 @@ pokegreen11_opt    = -sv -n 1 -k 01 -l 0x33 -m MBC1+RAM+BATTERY -r 03 -t "POKEMO
 pokegreen_debug_opt= -sv -n 1 -k 01 -l 0x33 -m MBC1+RAM+BATTERY -r 03 -t "POKEMON GREEN"
 pokegreen_romaji_db_opt= -sv -n 1 -k 01 -l 0x33 -m MBC1+RAM+BATTERY -r 03 -t "POKEMON GREEN"
 pokegreen_romaji_opt= -sv -n 1 -k 01 -l 0x33 -m MBC1+RAM+BATTERY -r 03 -t "POKEMON GREEN"
+pokered_romaji_db_opt= -sv -n 1 -k 01 -l 0x33 -m MBC1+RAM+BATTERY -r 03 -t "POKEMON RED"
+pokered_romaji_opt= -sv -n 1 -k 01 -l 0x33 -m MBC1+RAM+BATTERY -r 03 -t "POKEMON RED"
 pokered11_vc_opt   = -sv -n 1 -k 01 -l 0x33 -m MBC1+RAM+BATTERY -r 03 -t "POKEMON RED"
 pokegreen11_vc_opt = -sv -n 1 -k 01 -l 0x33 -m MBC1+RAM+BATTERY -r 03 -t "POKEMON GREEN"
 
