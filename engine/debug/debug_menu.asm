@@ -68,7 +68,7 @@ DebugBattleRivalName:
 DebugMenuOptions:
 	db   "ファイト"
 	next "デバッグ<NEXT>"
-	dname "おしょう"
+	next "みずでっぽうを　はっしゃする。@"
 ELSE
 	ret
 ENDC
