@@ -616,7 +616,7 @@ DEF	_si = $6B
 
 	charmap "？",       $e6
 	charmap "！",       $e7
-	charmap "。",       $f4
+	charmap "。",       $f2
 
 	charmap "ァ",        $f4 ; katakana small a
 	charmap "ゥ",        $ea ; katakana small u
