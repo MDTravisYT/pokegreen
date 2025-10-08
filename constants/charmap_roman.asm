@@ -28,7 +28,7 @@ DEF	_ti = $13
 DEF	_tu = $23
 DEF	_te = $33
 DEF	_to = $43
-;DEF	_ty = $53
+DEF	__g = $53
 
 DEF	_na = $04
 DEF	_ni = $14
@@ -72,11 +72,11 @@ DEF	_we = $39
 DEF	_wo = $49
 DEF	_fe = $59
 
-;DEF	_va = $0A
-;DEF	_vi = $1A
-;DEF	_vu = $2A
-;DEF	_ve = $3A
-;DEF	_vo = $4A
+DEF	__k = $0A
+DEF	__s = $1A
+DEF	__t = $2A
+DEF	__h = $3A
+DEF	__m = $4A
 DEF	_fo = $5A
 
 DEF	_ga = $0B
@@ -91,11 +91,11 @@ DEF	_ja = $1C
 DEF	_zu = $2C
 DEF	_ze = $3C
 DEF	_zo = $4C
-;DEF	_fy = $5C
+DEF	__z = $5C
 
 DEF	_da = $0D
 DEF	_di = $1D
-;DEF	_du = $2D
+DEF	__r = $2D
 DEF	_de = $3D
 DEF	_do = $4D
 DEF	_dy = $5D
@@ -112,13 +112,15 @@ DEF	_pi = $1F
 DEF	_pu = $2F
 DEF	_pe = $3F
 DEF	_po = $4F
-;DEF	_py = $5F
+DEF	__j = $5F
 
 DEF	_sh = $60
 DEF	_ch = $61
 DEF	_ts = $62
-;DEF	_ye = $64
-;DEF	_vy = $65
+DEF	__f = $64
+DEF	__b = $65
+DEF	__p = $68
+DEF	__d = $69
 DEF	_hu = $6A
 DEF	_si = $6B
 
@@ -145,6 +147,12 @@ DEF	_si = $6B
 	charmap "ブ",	$80+_bu
 	charmap "ベ",	$80+_be
 	charmap "ボ",	$80+_bo
+	
+	charmap "パ",	$80+_pa
+	charmap "ピ",	$80+_pi
+	charmap "プ",	$80+_pu
+	charmap "ペ",	$80+_pe
+	charmap "ポ",	$80+_po
 
 	charmap "が",	$80+_ga
 	charmap "ぎ",	$80+_gi
@@ -168,11 +176,6 @@ DEF	_si = $6B
 	charmap "べ",	$80+_be
 	charmap "ぼ",	$80+_bo
 
-	charmap "パ",	$80+_pa
-	charmap "ピ",	$80+_pi
-	charmap "プ",	$80+_pu
-	charmap "ペ",	$80+_pe
-	charmap "ポ",	$80+_po
 	charmap "ぱ",	$80+_pa
 	charmap "ぴ",	$80+_pi
 	charmap "ぷ",	$80+_pu
@@ -263,7 +266,7 @@ DEF	_si = $6B
 ; Actual characters (from gfx/font/font.png)
 
 
-	charmap "<X>",	$e8
+	charmap "<X>",	$f4
 	charmap "<SI>",	$80+_si
 
 	charmap "ア",	$80+__a
@@ -312,11 +315,74 @@ DEF	_si = $6B
 	charmap "ワ",	$80+_wa
 	charmap "ヲ",	$80+_wo
 	charmap "ン",	$80+__n
-	charmap "ッ",	$e8			;	you'll be a pain to parse...
-	charmap "ャ",	$e8
-	charmap "ュ",	$e8
-	charmap "ョ",	$e8
-	charmap "ィ",	$e8
+	charmap "ッ",	$f4			;	you'll be a pain to parse...
+	charmap "ャ",	$f4
+	charmap "ュ",	$f4
+	charmap "ョ",	$f4
+	charmap "ィ",	$f4
+
+	charmap "ッカ",	$80+__k,$80+_ka
+	charmap "ッキ",	$80+__k,$80+_ki
+	charmap "ック",	$80+__k,$80+_ku
+	charmap "ッケ",	$80+__k,$80+_ke
+	charmap "ッコ",	$80+__k,$80+_ko
+	charmap "ッサ",	$80+__s,$80+_sa
+	charmap "ッシ",	$80+__s,$4a			;	macro char: Romaji_SHI
+	charmap "ッス",	$80+__s,$80+_su
+	charmap "ッセ",	$80+__s,$80+_se
+	charmap "ッソ",	$80+__s,$80+_so
+	charmap "ッタ",	$80+__t,$80+_ta
+	charmap "ッチ",	$80+__t,$49			;	macro char: Romaji_CHI
+	charmap "ッツ",	$80+__t,$48			;	macro char: Romaji_TSU
+	charmap "ッテ",	$80+__t,$80+_te
+	charmap "ット",	$80+__t,$80+_to
+	charmap "ッナ",	$80+__n,$80+_na
+	charmap "ッニ",	$80+__n,$80+_ni
+	charmap "ッヌ",	$80+__n,$80+_nu
+	charmap "ッネ",	$80+__n,$80+_ne
+	charmap "ッノ",	$80+__n,$80+_no
+	charmap "ッハ",	$80+__h,$80+_ha
+	charmap "ッヒ",	$80+__h,$80+_hi
+	charmap "ッフ",	$80+__f,$80+_fu
+	charmap "ッヘ",	$80+__h,$80+_he
+	charmap "ッホ",	$80+__h,$80+_ho
+	charmap "ッマ",	$80+__m,$80+_ma
+	charmap "ッミ",	$80+__m,$80+_mi
+	charmap "ッム",	$80+__m,$80+_mu
+	charmap "ッメ",	$80+__m,$80+_me
+	charmap "ッモ",	$80+__m,$80+_mo
+	charmap "ッラ",	$80+__r,$80+_ra
+	charmap "ッリ",	$80+__r,$80+_ri
+	charmap "ッル",	$80+__r,$80+_ru
+	charmap "ッレ",	$80+__r,$80+_re
+	charmap "ッロ",	$80+__r,$80+_ro
+	charmap "ッガ",	$80+__g,$80+_ga
+	charmap "ッギ",	$80+__g,$80+_gi
+	charmap "ッグ",	$80+__g,$80+_gu
+	charmap "ッゲ",	$80+__g,$80+_ge
+	charmap "ッゴ",	$80+__g,$80+_go
+	charmap "ッザ",	$80+__z,$80+_za
+	charmap "ッジ",	$80+__j,$80+_ji
+	charmap "ッズ",	$80+__z,$80+_zu
+	charmap "ッゼ",	$80+__z,$80+_ze
+	charmap "ッゾ",	$80+__z,$80+_zo
+	charmap "ッダ",	$80+__d,$80+_da
+	charmap "ッヂ",	$80+__j,$80+_ji
+	charmap "ッヅ",	$80+__z,$80+_zu
+	charmap "ッデ",	$80+__d,$80+_de
+	charmap "ッド",	$80+__d,$80+_do
+	charmap "ッバ",	$80+__b,$80+_ba
+	charmap "ッビ",	$80+__b,$80+_bi
+	charmap "ッブ",	$80+__b,$80+_bu
+	charmap "ッベ",	$80+__b,$80+_be
+	charmap "ッボ",	$80+__b,$80+_bo
+	charmap "ッパ",	$80+__p,$80+_pa
+	charmap "ッピ",	$80+__p,$80+_pi
+	charmap "ップ",	$80+__p,$80+_pu
+	charmap "ッペ",	$80+__p,$80+_pe
+	charmap "ッポ",	$80+__p,$80+_po
+	charmap "ッ　",	$7A,$7f			;	"- " dash and space
+
 
 	charmap "あ",	$80+__a
 	charmap "い",	$80+__i
@@ -364,10 +430,72 @@ DEF	_si = $6B
 	charmap "わ",	$80+_wa
 	charmap "を",	$80+_wo
 	charmap "ん",	$80+__n
-	charmap "っ",	$e8
-	charmap "ゃ",	$e8
-	charmap "ゅ",	$e8
-	charmap "ょ",	$e8
+	charmap "っ",	$f4
+	charmap "ゃ",	$f4
+	charmap "ゅ",	$f4
+	charmap "ょ",	$f4
+
+	charmap "っか",	$80+__k,$80+_ka
+	charmap "っき",	$80+__k,$80+_ki
+	charmap "っく",	$80+__k,$80+_ku
+	charmap "っけ",	$80+__k,$80+_ke
+	charmap "っこ",	$80+__k,$80+_ko
+	charmap "っさ",	$80+__s,$80+_sa
+	charmap "っし",	$80+__s,$4a			;	macro char: Romaji_SHI
+	charmap "っす",	$80+__s,$80+_su
+	charmap "っせ",	$80+__s,$80+_se
+	charmap "っそ",	$80+__s,$80+_so
+	charmap "った",	$80+__t,$80+_ta
+	charmap "っち",	$80+__t,$49			;	macro char: Romaji_CHI
+	charmap "っつ",	$80+__t,$48			;	macro char: Romaji_TSU
+	charmap "って",	$80+__t,$80+_te
+	charmap "っと",	$80+__t,$80+_to
+	charmap "っな",	$80+__n,$80+_na
+	charmap "っに",	$80+__n,$80+_ni
+	charmap "っぬ",	$80+__n,$80+_nu
+	charmap "っね",	$80+__n,$80+_ne
+	charmap "っの",	$80+__n,$80+_no
+	charmap "っは",	$80+__h,$80+_ha
+	charmap "っひ",	$80+__h,$80+_hi
+	charmap "っふ",	$80+__f,$80+_fu
+	charmap "っへ",	$80+__h,$80+_he
+	charmap "っほ",	$80+__h,$80+_ho
+	charmap "っま",	$80+__m,$80+_ma
+	charmap "っみ",	$80+__m,$80+_mi
+	charmap "っむ",	$80+__m,$80+_mu
+	charmap "っめ",	$80+__m,$80+_me
+	charmap "っも",	$80+__m,$80+_mo
+	charmap "っら",	$80+__r,$80+_ra
+	charmap "っり",	$80+__r,$80+_ri
+	charmap "っる",	$80+__r,$80+_ru
+	charmap "っれ",	$80+__r,$80+_re
+	charmap "っろ",	$80+__r,$80+_ro
+	charmap "っが",	$80+__g,$80+_ga
+	charmap "っぎ",	$80+__g,$80+_gi
+	charmap "っぐ",	$80+__g,$80+_gu
+	charmap "っげ",	$80+__g,$80+_ge
+	charmap "っご",	$80+__g,$80+_go
+	charmap "っざ",	$80+__z,$80+_za
+	charmap "っじ",	$80+__j,$80+_ji
+	charmap "っず",	$80+__z,$80+_zu
+	charmap "っぜ",	$80+__z,$80+_ze
+	charmap "っぞ",	$80+__z,$80+_zo
+	charmap "っだ",	$80+__d,$80+_da
+	charmap "っぢ",	$80+__j,$80+_ji
+	charmap "っづ",	$80+__z,$80+_zu
+	charmap "っで",	$80+__d,$80+_de
+	charmap "っど",	$80+__d,$80+_do
+	charmap "っば",	$80+__b,$80+_ba
+	charmap "っび",	$80+__b,$80+_bi
+	charmap "っぶ",	$80+__b,$80+_bu
+	charmap "っべ",	$80+__b,$80+_be
+	charmap "っぼ",	$80+__b,$80+_bo
+	charmap "っぱ",	$80+__p,$80+_pa
+	charmap "っぴ",	$80+__p,$80+_pi
+	charmap "っぷ",	$80+__p,$80+_pu
+	charmap "っぺ",	$80+__p,$80+_pe
+	charmap "っぽ",	$80+__p,$80+_po
+	charmap "っ　",	$7A,$7f			;	"- " dash and space
 
 	charmap "きゃ",	$80+_ky,$80+__a
 	charmap "しゃ",	$80+_sh,$80+__a
@@ -480,9 +608,9 @@ DEF	_si = $6B
 
 	charmap "？",       $e6
 	charmap "！",       $e7
-	charmap "。",       $e8
+	charmap "。",       $f4
 
-	charmap "ァ",        $e9 ; katakana small a
+	charmap "ァ",        $f4 ; katakana small a
 	charmap "ゥ",        $ea ; katakana small u
 	charmap "ェ",        $eb ; katakana small e
 

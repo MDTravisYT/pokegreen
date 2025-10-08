@@ -3,13 +3,13 @@ MonsterNames::
 	dname	"サイドン"
 	dname	"ガルーラ"
 	dname	"ニドラン♂"
-	dname	"ピッピ"
+	db		"ピッピ@@"	 		; MDT: manual input since compiler doesnt like double charmaps
 	dname	"オニスズメ"
 	dname	"ビリリダマ"
 	dname	"ニドキング"
 	dname	"ヤドラン"
 	dname	"フシギソウ"
-	dname	"ナッシー"
+	db		"ナッシー@"		 ; MDT: manual input since compiler doesnt like double charmaps
 	dname	"ベロリンガ"
 	dname	"タマタマ"
 	dname	"ベトベター"
@@ -27,7 +27,7 @@ MonsterNames::
 	dname	"ゴース"
 	dname	"ストライク"
 	dname	"ヒトデマン"
-	dname	"カメックス"
+	db		"カメックス"		 ; MDT: manual input since compiler doesnt like double charmaps
 	dname	"カイロス"
 	db		"モンジャラ@"		 ; MDT: manual input since compiler doesnt like double charmaps
 	dname	"けつばん"
@@ -35,18 +35,18 @@ MonsterNames::
 	dname	"ガーディ"
 	dname	"イワーク"
 	dname	"オニドリル"
-	dname	"ポッポ"
+	db		"ポッポ@@"		 ; MDT: manual input since compiler doesnt like double charmaps
 	dname	"ヤドン"
 	dname	"ユンゲラー"
 	dname	"ゴローン"
-	dname	"ラッキー"
+	db		"ラッキー@"		 ; MDT: manual input since compiler doesnt like double charmaps
 	dname	"ゴーリキー"
 	dname	"バリヤード"
 	dname	"サワムラー"
 	dname	"エビワラー"
-	dname	"アーボック"
+	db		"アーボック"		 ; MDT: manual input since compiler doesnt like double charmaps
 	dname	"パラセクト"
-	dname	"コダック"
+	db		"コダック@"		 ; MDT: manual input since compiler doesnt like double charmaps
 	dname	"スリープ"
 	db		"ゴローニャ"		 ; MDT: manual input since compiler doesnt like double charmaps
 	dname	"けつばん"
@@ -91,7 +91,7 @@ MonsterNames::
 	db		"ハクリュー"		 ; MDT: manual input since compiler doesnt like double charmaps
 	dname	"カブト"
 	dname	"カブトプス"
-	dname	"タッツー"
+	db		"タッツー@"		 ; MDT: manual input since compiler doesnt like double charmaps
 	dname	"シードラ"
 	dname	"けつばん"
 	dname	"けつばん"
@@ -106,7 +106,7 @@ MonsterNames::
 	dname	"サンダース"
 	db		"シャワーズ"		 ; MDT: manual input since compiler doesnt like double charmaps
 	dname	"ワンリキー"
-	dname	"ズバット"
+	db		"ズバット@"		 ; MDT: manual input since compiler doesnt like double charmaps
 	dname	"アーボ"
 	dname	"パラス"
 	db		"ニョロゾ@"		 ; MDT: manual input since compiler doesnt like double charmaps
@@ -127,9 +127,9 @@ MonsterNames::
 	dname	"バタフリー"
 	dname	"カイリキー"
 	dname	"けつばん"
-	dname	"ゴルダック"
+	db		"ゴルダック"		 ; MDT: manual input since compiler doesnt like double charmaps
 	dname	"スリーパー"
-	dname	"ゴルバット"
+	db		"ゴルバット"		 ; MDT: manual input since compiler doesnt like double charmaps
 	db		"ミュウツー"		 ; MDT: manual input since compiler doesnt like double charmaps
 	dname	"カビゴン"
 	dname	"コイキング"
@@ -164,8 +164,8 @@ MonsterNames::
 	dname	"けつばん"
 	dname	"ポニータ"
 	db		"ギャロップ"		 ; MDT: manual input since compiler doesnt like double charmaps
-	dname	"コラッタ"
-	dname	"ラッタ"
+	db		"コラッタ@"		 ; MDT: manual input since compiler doesnt like double charmaps
+	db		"ラッタ@@"		 ; MDT: manual input since compiler doesnt like double charmaps
 	dname	"ニドリーノ"
 	dname	"ニドリーナ"
 	dname	"イシツブテ"
@@ -189,5 +189,5 @@ MonsterNames::
 	dname	"ラフレシア"
 	dname	"マダツボミ"
 	dname	"ウツドン"
-	dname	"ウツボット"
+	db		"ウツボット"		 ; MDT: manual input since compiler doesnt like double charmaps
 	assert_table_length NUM_POKEMON_INDEXES
