@@ -168,51 +168,21 @@ OakSpeech:
 OakSpeechText1:
 	text_far _OakSpeechText1
 	text_end
-
 OakSpeechText2:
-	text "この　せかいには"
-	line "ポケット　モンスターと　よばれる"
-
-	para "いきもの　たちが"
-	line "いたるところに　すんでいる！@"
-; BUG: The cry played does not match the sprite displayed.
+	text_far _OakSpeechText2A
+	; BUG: The cry played does not match the sprite displayed.
 	sound_cry_nidorina
-	text_start
-
-	para "その　#　という　いきものを"
-	line "ひとは　ペットに　したり"
-	cont "しょうぶに　つかったり···"
-
-	para "そして···"
-
-	para "わたしは　この　#の"
-	line "けんきゅうを　してる　というわけだ"
-	prompt
-
+	text_far _OakSpeechText2B
+	text_end
 IntroducePlayerText:
-	text "では　はじめに　きみの　なまえを"
-	line "おしえて　もらおう！"
-	prompt
-
+	text_far _IntroducePlayerText
+	text_end
 IntroduceRivalText:
-	text "こいつは　わたしの　まご"
-	line "きみの　おさななじみであり"
-	cont "ライバル　である"
-
-	para "···えーと？"
-	line "なまえは　なんて　いったかな？"
-	prompt
-
+	text_far _IntroduceRivalText
+	text_end
 OakSpeechText3:
-	text "<PLAYER>！"
-
-	para "いよいよ　これから　"
-	line "きみの　ものがたりの　はじまりだ！"
-
-	para "ゆめと　ぼうけんと！"
-	line "ポケット　モンスターの　せかいへ！"
-	cont "レッツ　ゴー！"
-	done
+	text_far _OakSpeechText3
+	text_end
 
 FadeInIntroPic:
 	ld hl, IntroFadePalettes
