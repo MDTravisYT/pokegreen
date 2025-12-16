@@ -175,8 +175,7 @@ PalletTownOakText:
 	jp TextScriptEnd
 
 .HeyWaitDontGoOutText:
-	text "オーキド『おーい！"
-	line "まてー！　まつんじゃあ！@"
+	text_far _PalletTownOakHeyWaitDontGoOutText
 	text_asm
 	ld c, 10
 	call DelayFrames
@@ -189,49 +188,29 @@ PalletTownOakText:
 	jp TextScriptEnd
 
 .ItsUnsafeText:
-	text "オーキド『あぶない　とこだった！"
-	line "くさむらでは"
-	cont "やせいの　#が　とびだす！"
-
-	para "こちらも　#を"
-	line "もって　いれば"
-	cont "たたかえるのだが<⋯>"
-	cont "そうじゃ！"
-
-	para "<⋯>　ちょっと"
-	line "わしに　ついて　きなさい！"
-	done
+	text_far _PalletTownOakItsUnsafeText
+	text_end
 
 PalletTownGirlText:
-	text "わたしも"
-	line "#を　そだててるの！"
-
-	para "つよく　なれば"
-	line "ガードマンの　かわりに　なるしね"
-	done
+	text_far _PalletTownGirlText
+	text_end
 
 PalletTownFisherText:
-	text "かがくの　ちからって　すげー！"
-
-	para "いまは　<PC>つうしんで"
-	line "どうぐや　#を"
-	cont "データにして　おくれるんだと"
-	done
+	text_far _PalletTownFisherText
+	text_end
 
 PalletTownOaksLabSignText:
-	text "ここは　オーキド　はかせの"
-	line "#　けんきゅうじょ"
-	done
+	text_far _PalletTownOaksLabSignText
+	text_end
 
 PalletTownSignText:
-	text "ここは　マサラ　タウン"
-	line "マサラは　まっしろ　はじまりのいろ"
-	done
+	text_far _PalletTownSignText
+	text_end
 
 PalletTownPlayersHouseSignText:
-	text "ここは　<PLAYER>　のいえ"
-	done
+	text_far _PalletTownPlayersHouseSignText
+	text_end
 
 PalletTownRivalsHouseSignText:
-	text "ここは　<RIVAL>　のいえ"
-	done
+	text_far _PalletTownRivalsHouseSignText
+	text_end
