@@ -75,11 +75,6 @@ INCLUDE "engine/events/hidden_objects/town_map.asm"
 INCLUDE "engine/events/hidden_objects/pokemon_stuff.asm"
 
 
-SECTION "Move Names", ROMX
-
-INCLUDE "data/moves/names.asm"
-
-
 SECTION "Font Graphics", ROMX
 
 INCLUDE "gfx/font.asm"

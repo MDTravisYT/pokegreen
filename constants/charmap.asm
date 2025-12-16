@@ -59,6 +59,8 @@
 	charmap "ペ", $47 ; Katakana, shared graphic tile with Hiragana "ぺ"
 	charmap "ぽ", $48
 
+	charmap "<PAGE>",    $49
+	charmap "<PKMN>",    $4a ; "<PK><MN>"
 	charmap "<_CONT>",   $4b ; implements "<CONT>"
 	charmap "<SCROLL>",  $4c
 	charmap "<NEXT>",    $4e
@@ -78,6 +80,7 @@
 	charmap "<TM>",      $5c ; "わざマシン"
 	charmap "<TRAINER>", $5d ; "トレーナー"
 	charmap "<ROCKET>",  $5e ; "ロケットだん"
+	charmap "<DEXEND>",  $5f
 
 
 ; Actual characters (from gfx/font/font_extra.png)
@@ -97,6 +100,7 @@
 	charmap "Ｍ", $6c
 
 	charmap ":",  $6d ; colon
+	charmap "<COLON>",   $6d ; colon with tinier dots than ":"
 
 	charmap "ぃ",  $6e ; Hiragana small "い"
 	charmap "ぅ",  $6f ; Hiragana small "う"
