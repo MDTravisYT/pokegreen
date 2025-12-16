@@ -166,14 +166,8 @@ OakSpeech:
 	jp ClearScreen
 
 OakSpeechText1:
-	text "はじめまして！"
-	line "ポケット　モンスターの　せかいへ"
-	cont "ようこそ！"
-
-	para "わたしの　なまえは　オーキド"
-	line "みんなからは　#　はかせと"
-	cont "したわれて　おるよ"
-	prompt
+	text_far _OakSpeechText1
+	text_end
 
 OakSpeechText2:
 	text "この　せかいには"

@@ -42,6 +42,11 @@ MACRO rev_Check_hardware_inc
     endc
 ENDM
 
+; MBC1
+DEF MBC1SRamEnable      EQU $0000
+DEF MBC1RomBank         EQU $2000
+DEF MBC1SRamBank        EQU $4000
+DEF MBC1SRamBankingMode EQU $6000
 
 ;******************************************************************************
 ; Memory-mapped registers ($FFxx range)

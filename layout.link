@@ -33,7 +33,7 @@ ROM0
 	"Header"
 	org $150
 	"Home"
-	"Garbage 0"
+;	"Garbage 0"
 ROMX $1
 	"bank1"
 	"Garbage 1"
@@ -183,6 +183,8 @@ ROMX $1F
 	"Music Headers 3"
 	"Sound Effects 3"
 	"Garbage 31"
+ROMX $20
+	"Text 3"
 WRAM0
 	"Audio RAM"
 	org $c100

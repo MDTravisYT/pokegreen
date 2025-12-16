@@ -167,6 +167,12 @@ MACRO sound_cry_dewgong
 	db TX_SOUND_CRY_DEWGONG
 ENDM
 
+	const TX_FAR ; $17
+MACRO text_far
+	db TX_FAR
+	dab \1 ; address of text commands
+ENDM
+
 	const_next $50
 
 	const TX_END ; $50

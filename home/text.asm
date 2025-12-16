@@ -365,6 +365,8 @@ NextTextCommand::
 
 .TextCommand:
 	push hl
+	cp TX_FAR
+	jp z, TextCommand_FAR
 	ld hl, TextCommandJumpTable
 	push bc
 	add a
@@ -615,6 +617,32 @@ TextCommand_WAIT_BUTTON::
 	call ManualTextScroll
 	pop bc
 	pop hl
+	jp NextTextCommand
+
+TextCommand_FAR::
+; write text from a different bank (little endian)
+	pop hl
+	ldh a, [hLoadedROMBank]
+	push af
+
+	ld a, [hli]
+	ld e, a
+	ld a, [hli]
+	ld d, a
+	ld a, [hli]
+
+	ldh [hLoadedROMBank], a
+	ld [MBC1RomBank], a
+
+	push hl
+	ld l, e
+	ld h, d
+	call TextCommandProcessor
+	pop hl
+
+	pop af
+	ldh [hLoadedROMBank], a
+	ld [MBC1RomBank], a
 	jp NextTextCommand
 
 TextCommandJumpTable::

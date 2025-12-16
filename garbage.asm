@@ -7,13 +7,13 @@ IF DEF(_REV1)
 ENDC
 
 
-SECTION "Garbage 0", ROM0
-IF DEF(_REV0)
-	INCBIN "garbage/rev_0/garbage_0.bin"
-ENDC
-IF DEF(_REV1)
-	INCBIN "garbage/rev_1/garbage_0.bin"
-ENDC
+;SECTION "Garbage 0", ROM0
+;IF DEF(_REV0)
+;	INCBIN "garbage/rev_0/garbage_0.bin"
+;ENDC
+;IF DEF(_REV1)
+;	INCBIN "garbage/rev_1/garbage_0.bin"
+;ENDC
 
 
 SECTION "Garbage 1", ROMX
