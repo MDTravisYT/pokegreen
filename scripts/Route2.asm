@@ -9,10 +9,9 @@ Route2_TextPointers:
 	dw_const Route2DiglettsCaveSignText, TEXT_ROUTE2_DIGLETTS_CAVE_SIGN
 
 Route2SignText:
-	text "ここは　２ばん　どうろ"
-	line "トキワ　シティ　<⋯>　ニビ　シティ"
-	done
+	text_far _Route2SignText
+	text_end
 
 Route2DiglettsCaveSignText:
-	text "ここは　ディグダの　あな"
-	done
+	text_far _Route2DiglettsCaveSignText
+	text_end

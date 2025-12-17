@@ -78,32 +78,22 @@ ViridianMart_TextPointers2:
 	dw_const ViridianMartCooltrainerMText, TEXT_VIRIDIANMART_COOLTRAINER_M
 
 ViridianMartClerkSayHiToOakText:
-	text "じゃ！"
-	line "オーキド　はかせに　よろしく！"
-	done
+	text_far _ViridianMartClerkSayHiToOakText
+	text_end
 
 ViridianMartClerkYouCameFromPalletTownText:
-	text "お！　きみは"
-	line "マサラ　タウンから　きたんだね？"
-	done
+	text_far _ViridianMartClerkYouCameFromPalletTownText
+	text_end
 
 ViridianMartClerkParcelQuestText:
-	text "オーキド　はかせを　しってるね？"
-
-	para "これ　たのまれてるんだけど"
-	line "わたして　くれるかい！"
-
-	para "<PLAYER>は　ショップから"
-	line "とどけものを　あずかった！@"
+	text_far _ViridianMartClerkParcelQuestText
 	sound_get_key_item
 	text_end
 
 ViridianMartYoungsterText:
-	text "ねえ　この　みせの　うれすじは"
-	line "どくけし　なんだって！"
-	done
+	text_far _ViridianMartYoungsterText
+	text_end
 
 ViridianMartCooltrainerMText:
-	text "ないなー　キズぐすり<⋯>"
-	line "ここでは　うりきれてる　みたい"
-	done
+	text_far _ViridianMartCooltrainerMText
+	text_end

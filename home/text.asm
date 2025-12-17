@@ -616,15 +616,19 @@ TextCommandJumpTable::
 	dw TextCommand_BOX           ; TX_BOX
 	dw TextCommand_LOW           ; TX_LOW
 	dw TextCommand_PROMPT_BUTTON ; TX_PROMPT_BUTTON
-IF DEF(_DEBUG)
-	dw _ContTextNoPause          ; TX_SCROLL
-ELSE
 	dw TextCommand_SCROLL        ; TX_SCROLL
-ENDC
 	dw TextCommand_START_ASM     ; TX_START_ASM
 	dw TextCommand_NUM           ; TX_NUM
 	dw TextCommand_PAUSE         ; TX_PAUSE
 	dw TextCommand_SOUND         ; TX_SOUND_GET_ITEM_1 (also handles other TX_SOUND_* commands)
 	dw TextCommand_DOTS          ; TX_DOTS
 	dw TextCommand_WAIT_BUTTON   ; TX_WAIT_BUTTON
-	; greater TX_* constants are handled directly by NextTextCommand
+	dw TextCommand_SOUND         ; TX_SOUND_POKEDEX_RATING
+	dw TextCommand_SOUND         ; TX_SOUND_GET_ITEM_1_DUPLICATE
+	dw TextCommand_SOUND         ; TX_SOUND_GET_ITEM_2
+	dw TextCommand_SOUND         ; TX_SOUND_GET_KEY_ITEM
+	dw TextCommand_SOUND         ; TX_SOUND_CAUGHT_MON
+	dw TextCommand_SOUND         ; TX_SOUND_DEX_PAGE_ADDED
+	dw TextCommand_SOUND         ; TX_SOUND_CRY_NIDORINA
+	dw TextCommand_SOUND         ; TX_SOUND_CRY_PIDGEOT
+	dw TextCommand_SOUND         ; TX_SOUND_CRY_DEWGONG

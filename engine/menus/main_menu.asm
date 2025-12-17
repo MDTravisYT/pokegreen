@@ -141,22 +141,22 @@ LinkMenu:
 	call SaveScreenTilesToBuffer1
 	ld hl, WhereWouldYouLikeText
 	call PrintText
-	hlcoord 8, 10
+	hlcoord 5, 5
 	ld b, $6
-	ld c, $a
+	ld c, $d
 	call TextBoxBorder
 	call UpdateSprites
-	hlcoord 10, 12
+	hlcoord 7, 7
 	ld de, CableClubOptionsText
 	call PlaceString
 	xor a
 	ld [wUnusedLinkMenuByte], a
 	ld [wCableClubDestinationMap], a
 	ld hl, wTopMenuItemY
-	ld a, $c
+	ld a, 7
 	ld [hli], a
 	ASSERT wTopMenuItemY + 1 == wTopMenuItemX
-	ld a, 9
+	ld a, 6
 	ld [hli], a
 	ASSERT wTopMenuItemX + 1 == wCurrentMenuItem
 	xor a
@@ -227,8 +227,8 @@ LinkMenu:
 	ld a, SC_START | SC_INTERNAL
 	ldh [rSC], a
 .skipStartingTransfer
-	ld b, '　'
-	ld c, '　'
+	ld b, ' '
+	ld c, ' '
 	ld d, '▷'
 	ld a, [wLinkMenuSelectionSendBuffer]
 	and PAD_B << 2 ; was B button pressed?
@@ -245,11 +245,11 @@ LinkMenu:
 	ld c, d
 .updateCursorPosition
 	ld a, b
-	ldcoord_a 9, 12
+	ldcoord_a 6, 7
 	ld a, c
-	ldcoord_a 9, 14
+	ldcoord_a 6, 9
 	ld a, d
-	ldcoord_a 9, 16
+	ldcoord_a 6, 11
 	ld c, 40
 	call DelayFrames
 	call LoadScreenTilesFromBuffer1
@@ -300,18 +300,16 @@ LinkMenu:
 	ret
 
 WhereWouldYouLikeText:
-	text "どちらの　へやに"
-	line "いきますか？"
-	done
+	text_far _WhereWouldYouLikeText
+	text_end
 
 PleaseWaitText:
-	text "それでは　これより"
-	line "ごあんない　いたします"
-	done
+	text_far _PleaseWaitText
+	text_end
 
 LinkCanceledText:
-	text "つうしんは　キャンセル　されました"
-	done
+	text_far _LinkCanceledText
+	text_end
 
 StartNewGame:
 	ld hl, wStatusFlags6
@@ -343,37 +341,37 @@ SpecialEnterMap::
 	jp EnterMap
 
 ContinueText:
-	db   "つづきからはじめる"
+	db "CONTINUE"
 	next ""
 	; fallthrough
 
 NewGameText:
-	db   "さいしょからはじめる"
-	next "せっていを　かえる@"
+	db   "NEW GAME"
+	next "OPTION@"
 
 CableClubOptionsText:
-	db   "トレードセンター"
-	next "コロシアム"
-	next "やめる@"
+	db   "TRADE CENTER"
+	next "COLOSSEUM"
+	next "CANCEL@"
 
 DisplayContinueGameInfo:
 	xor a
 	ldh [hAutoBGTransferEnabled], a
 	hlcoord 4, 7
 	ld b, 8
-	ld c, 13
+	ld c, 14
 	call TextBoxBorder
 	hlcoord 5, 9
 	ld de, SaveScreenInfoText
 	call PlaceString
-	hlcoord 13, 9
+	hlcoord 12, 9
 	ld de, wPlayerName
 	call PlaceString
-	hlcoord 14, 11
+	hlcoord 17, 11
 	call PrintNumBadges
-	hlcoord 13, 13
+	hlcoord 16, 13
 	call PrintNumOwnedMons
-	hlcoord 12, 15
+	hlcoord 13, 15
 	call PrintPlayTime
 	ld a, 1
 	ldh [hAutoBGTransferEnabled], a
@@ -383,21 +381,21 @@ DisplayContinueGameInfo:
 PrintSaveScreenText:
 	xor a
 	ldh [hAutoBGTransferEnabled], a
-	hlcoord 5, 0
-	ld b, 8
-	ld c, 13
+	hlcoord 4, 0
+	ld b, $8
+	ld c, $e
 	call TextBoxBorder
 	call LoadTextBoxTilePatterns
 	call UpdateSprites
-	hlcoord 6, 2
+	hlcoord 5, 2
 	ld de, SaveScreenInfoText
 	call PlaceString
-	hlcoord 13, 2
+	hlcoord 12, 2
 	ld de, wPlayerName
 	call PlaceString
-	hlcoord 15, 4
+	hlcoord 17, 4
 	call PrintNumBadges
-	hlcoord 14, 6
+	hlcoord 16, 6
 	call PrintNumOwnedMons
 	hlcoord 13, 8
 	call PrintPlayTime
@@ -437,10 +435,10 @@ PrintPlayTime:
 	jp PrintNumber
 
 SaveScreenInfoText:
-	db   "しゅじんこう"
-	next "もっているバッジ　　　　こ"
-	next "#ずかん　　　　ひき"
-	next "プレイじかん@"
+	db   "PLAYER"
+	next "BADGES    "
+	next "#DEX    "
+	next "TIME@"
 
 DisplayOptionMenu:
 	hlcoord 0, 0
@@ -561,20 +559,6 @@ DisplayOptionMenu:
 	ld [wTopMenuItemX], a
 	call PlaceUnfilledArrowMenuCursor
 	jp .loop
-.pressedLeftInTextSpeed
-	ld a, [wOptionsTextSpeedCursorX] ; text speed cursor X coordinate
-	cp 1
-	jr z, .updateTextSpeedXCoord
-	sub 7
-	jr .updateTextSpeedXCoord
-.pressedRightInTextSpeed
-	ld a, [wOptionsTextSpeedCursorX] ; text speed cursor X coordinate
-	cp 15
-	jr z, .updateTextSpeedXCoord
-	add 7
-.updateTextSpeedXCoord
-	ld [wOptionsTextSpeedCursorX], a ; text speed cursor X coordinate
-	jp .eraseOldMenuCursor
 .cursorInBattleAnimation
 	ld a, [wOptionsBattleAnimCursorX] ; battle animation cursor X coordinate
 	xor 1 ^ 10 ; toggle between 1 and 10
@@ -585,21 +569,45 @@ DisplayOptionMenu:
 	xor 1 ^ 10 ; toggle between 1 and 10
 	ld [wOptionsBattleStyleCursorX], a
 	jp .eraseOldMenuCursor
+.pressedLeftInTextSpeed
+	ld a, [wOptionsTextSpeedCursorX] ; text speed cursor X coordinate
+	cp 1
+	jr z, .updateTextSpeedXCoord
+	cp 7
+	jr nz, .fromSlowToMedium
+	sub 6
+	jr .updateTextSpeedXCoord
+.fromSlowToMedium
+	sub 7
+	jr .updateTextSpeedXCoord
+.pressedRightInTextSpeed
+	ld a, [wOptionsTextSpeedCursorX] ; text speed cursor X coordinate
+	cp 14
+	jr z, .updateTextSpeedXCoord
+	cp 7
+	jr nz, .fromFastToMedium
+	add 7
+	jr .updateTextSpeedXCoord
+.fromFastToMedium
+	add 6
+.updateTextSpeedXCoord
+	ld [wOptionsTextSpeedCursorX], a ; text speed cursor X coordinate
+	jp .eraseOldMenuCursor
 
 TextSpeedOptionText:
-	db   "はなしの　はやさ"
-	next "　はやい　　　　ふつう　　　　おそい@"
+	db   "TEXT SPEED"
+	next " FAST  MEDIUM SLOW@"
 
 BattleAnimationOptionText:
-	db   "せんとう　アニメーション"
-	next "　じっくり　みる　　とばして　みる@"
+	db   "BATTLE ANIMATION"
+	next " ON       OFF@"
 
 BattleStyleOptionText:
-	db   "しあいの　ルール"
-	next "　いれかえタイプ　　かちぬきタイプ@"
+	db   "BATTLE STYLE"
+	next " SHIFT    SET@"
 
 OptionMenuCancelText:
-	db "おわり@"
+	db "CANCEL@"
 
 ; sets the options variable according to the current placement of the menu cursors in the options menu
 SetOptionsFromCursorPositions:
@@ -683,10 +691,10 @@ SetCursorPositionsFromOptions:
 ; 00: X coordinate of menu cursor
 ; 01: delay after printing a letter (in frames)
 TextSpeedOptionData:
-	db 15, TEXT_DELAY_SLOW
-	db  8, TEXT_DELAY_MEDIUM
+	db 14, TEXT_DELAY_SLOW
+	db  7, TEXT_DELAY_MEDIUM
 	db  1, TEXT_DELAY_FAST
-	db  8, -1 ; end (default X coordinate)
+	db  7, -1 ; end (default X coordinate)
 
 CheckForPlayerNameInSRAM:
 ; Check if the player name data in SRAM has a string terminator character

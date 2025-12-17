@@ -13,20 +13,12 @@ ViridianPokecenterNurseText:
 	script_pokecenter_nurse
 
 ViridianPokecenterGentlemanText:
-	text "すみに　ある　<PC>は　どうぞ"
-	line "ごじゆうに　おつかいください！"
-
-	para "<⋯>と　うけつけの　ねーちゃんが"
-	line "いっとった　しんせつやのう"
-	done
+	text_far _ViridianPokecenterGentlemanText
+	text_end
 
 ViridianPokecenterCooltrainerMText:
-	text "#センターは　このさき"
-	line "どこの　まちに　いっても　ある！"
-
-	para "なんびき　あずけても　ただ　だし"
-	line "こまめに　つかうと　いいよ！"
-	done
+	text_far _ViridianPokecenterCooltrainerMText
+	text_end
 
 ViridianPokecenterLinkReceptionistText:
 	script_cable_club_receptionist
