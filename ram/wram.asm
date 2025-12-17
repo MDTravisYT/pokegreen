@@ -462,13 +462,7 @@ wLinkBattleRandomNumberListIndex:: db
 ; number of times remaining that AI action can occur
 wAICount:: db
 
-IF DEF(_REV0)
-	wUnknown_CCE0:: db
-	ds 1
-ENDC
-IF DEF(_REV1)
 	ds 2
-ENDC
 
 wEnemyMoveListIndex:: db
 
@@ -865,8 +859,6 @@ wGymTrashCanIndex:: db
 
 wSymmetricSpriteOAMAttributes:: db
 
-	ds 5
-
 wMonPartySpriteSpecies:: db
 
 ; in the trade animation, the mon that leaves the left gameboy
@@ -1087,13 +1079,9 @@ ENDU
 
 wGymCityName:: ds GYM_CITY_LENGTH
 
-UNION
 wGymLeaderName:: ds NAME_LENGTH
 
-NEXTU
-	ds 4
 wItemList:: ds 16
-ENDU
 
 wListPointer:: dw
 
@@ -1198,7 +1186,6 @@ wEnemyMonSpecies2:: db
 wBattleMonSpecies2:: db
 
 wEnemyMonNick:: ds NAME_LENGTH
-	ds 5
 
 wEnemyMon:: battle_struct wEnemyMon
 
@@ -1207,7 +1194,6 @@ wEnemyMonActualCatchRate:: db
 wEnemyMonBaseExp:: db
 
 wBattleMonNick:: ds NAME_LENGTH
-	ds 5
 wBattleMon:: battle_struct wBattleMon
 
 
@@ -1231,8 +1217,6 @@ ENDU
 wTrainerBaseMoney:: dw ; BCD
 
 wMissableObjectCounter:: db
-
-	ds 1
 
 ; 11 bytes for the letters of the opposing trainer
 ; the name is terminated with $50 with possible
@@ -1702,13 +1686,6 @@ ENDU
 
 wSerialPlayerDataBlock:: ; ds $1a8
 
-UNION
-IF DEF(_REV0)
-	wUnknownSerialCounter3:: dw
-	wUnknownSerialByte:: db
-ENDC
-
-NEXTU
 ; When a real item is being used, this is 0.
 ; When a move is acting as an item, this is the ID of the item it's acting as.
 ; For example, out-of-battle Dig is executed using a fake Escape Rope item. In
@@ -1718,7 +1695,6 @@ wPseudoItemID:: db
 wUnusedAlreadyOwnedFlag:: db
 
 	ds 2
-ENDU
 
 wEvoStoneItemID:: db
 
@@ -2166,7 +2142,7 @@ NEXTU
 ; linked game's trainer name
 wLinkEnemyTrainerName:: ds NAME_LENGTH
 
-	ds 6
+	ds 1
 
 wSerialEnemyDataBlock:: ; ds $1a8
 

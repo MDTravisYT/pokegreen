@@ -16,12 +16,6 @@ CableClub_DoBattleOrTrade:
 	hlcoord 4, 10
 	ld de, PleaseWaitString
 	call PlaceString
-IF DEF(_REV0)
-	xor a
-	ld hl, wPlayerNumHits
-	ld [hli], a
-	ld [wUnknown_CCE0], a
-ENDC
 IF DEF(_REV1)
 	ld hl, wPlayerNumHits
 	xor a
@@ -119,9 +113,6 @@ ENDC
 ; if using internal clock
 ; send two zero bytes for syncing purposes?
 	call Delay3
-IF DEF(_REV0)
-	ld a, [wUnknown_CCE0]
-ENDC
 IF DEF(_REV1)
 	xor a
 ENDC
@@ -129,9 +120,6 @@ ENDC
 	ld a, SC_START | SC_INTERNAL
 	ldh [rSC], a
 	call DelayFrame
-IF DEF(_REV0)
-	ld a, [wUnknown_CCE0]
-ENDC
 IF DEF(_REV1)
 	xor a
 ENDC

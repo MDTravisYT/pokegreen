@@ -12,10 +12,6 @@ CableClubNPC::
 .receivedPokedex
 	ld a, $1
 	ld [wMenuJoypadPollCount], a
-IF DEF(_REV0)
-	ld a, $10
-	ld [wUnknown_CCE0], a
-ENDC
 	ld a, 90
 	ld [wLinkTimeoutCounter], a
 .establishConnectionLoop
