@@ -87,6 +87,5 @@ ResetStats:
 	ret
 
 StatusChangesEliminatedText:
-	text "すべての　ステータスが"
-	line "もとに　もどった！"
-	prompt
+	text_far _StatusChangesEliminatedText
+	text_end

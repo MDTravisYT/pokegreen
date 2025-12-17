@@ -24,9 +24,11 @@ ConversionEffect_:
 	jp PrintText
 
 ConvertedTypeText:
-	text "<TARGET>の　ぞくせいを"
-	line "じぶんに　はりつけた！"
-	prompt
+	text_far _ConvertedTypeText
+	text_end
 
 PrintButItFailedText:
-	jpfar PrintButItFailedText_
+	ld hl, PrintButItFailedText_
+CallBankF:
+	ld b, BANK(PrintButItFailedText_)
+	jp Bankswitch

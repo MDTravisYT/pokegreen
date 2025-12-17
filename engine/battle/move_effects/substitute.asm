@@ -65,16 +65,13 @@ SubstituteEffect_:
 	jp PrintText
 
 SubstituteText:
-	text "<USER>の"
-	line "ぶんしんが　あらわれた"
-	prompt
+	text_far _SubstituteText
+	text_end
 
 HasSubstituteText:
-	text "しかし　<USER>の"
-	line "みがわりは　すでに　でていた！"
-	prompt
+	text_far _HasSubstituteText
+	text_end
 
 TooWeakSubstituteText:
-	text "しかし　ぶんしんを　だすには"
-	line "たいりょくが　たりなかった！"
-	prompt
+	text_far _TooWeakSubstituteText
+	text_end

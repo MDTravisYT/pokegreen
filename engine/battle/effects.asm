@@ -68,14 +68,12 @@ SleepEffect:
 	jp PrintDidntAffectText
 
 FellAsleepText:
-	text "<TARGET>は"
-	line "ねむってしまった！"
-	prompt
+	text_far _FellAsleepText
+	text_end
 
 AlreadyAsleepText:
-	text "<TARGET>は　すでに"
-	line "ねむっている"
-	prompt
+	text_far _AlreadyAsleepText
+	text_end
 
 PoisonEffect:
 	ld hl, wEnemyMonStatus
@@ -164,13 +162,12 @@ PoisonEffect:
 	jp PrintDidntAffectText
 
 PoisonedText:
-	text "<TARGET>は　どくをあびた！"
-	prompt
+	text_far _PoisonedText
+	text_end
 
 BadlyPoisonedText:
-	text "<TARGET>は"
-	line "もうどくをあびた！"
-	prompt
+	text_far _BadlyPoisonedText
+	text_end
 
 DrainHPEffect:
 	jpfar DrainHPEffect_
@@ -305,14 +302,12 @@ FreezeBurnParalyzeEffect:
 	jp PrintText
 
 BurnedText:
-	text "<TARGET>は"
-	line "やけどをおった！"
-	prompt
+	text_far _BurnedText
+	text_end
 
 FrozenText:
-	text "<TARGET>は"
-	line "こおりづけになった！"
-	prompt
+	text_far _FrozenText
+	text_end
 
 CheckDefrost:
 ; any fire-type move that has a chance inflict burn (all but Fire Spin) will defrost a frozen target
@@ -350,9 +345,8 @@ CheckDefrost:
 	jp PrintText
 
 FireDefrostedText:
-	text "ほのおをあびて<TARGET>の"
-	line "こおりが　とけた！"
-	prompt
+	text_far _FireDefrostedText
+	text_end
 
 StatModifierUpEffect:
 	ld hl, wPlayerMonStatMods
@@ -520,10 +514,7 @@ PrintNothingHappenedText:
 	jp PrintText
 
 MonsStatsRoseText:
-	text "<USER>の"
-	line "@"
-	text_ram wStringBuffer
-	text "が@"
+	text_far _MonsStatsRoseText
 	text_asm
 	ld hl, GreatlyRoseText
 	ldh a, [hWhoseTurn]
@@ -539,11 +530,11 @@ MonsStatsRoseText:
 
 GreatlyRoseText:
 	text_pause
-	text "<SCROLL>ぐーんと@"
+	text_far _GreatlyRoseText
 ; fallthrough
 RoseText:
-	text "　あがった！"
-	prompt
+	text_far _RoseText
+	text_end
 
 StatModifierDownEffect:
 	ld hl, wEnemyMonStatMods
@@ -725,10 +716,7 @@ MoveMissed:
 	jp ConditionalPrintButItFailed
 
 MonsStatsFellText:
-	text "<TARGET>の"
-	line "@"
-	text_ram wStringBuffer
-	text "が@"
+	text_far _MonsStatsFellText
 	text_asm
 	ld hl, FellText
 	ldh a, [hWhoseTurn]
@@ -747,11 +735,11 @@ MonsStatsFellText:
 
 GreatlyFellText:
 	text_pause
-	text "<SCROLL>がくっと@"
+	text_far _GreatlyFellText
 ; fallthrough
 FellText:
-	text "　さがった！"
-	prompt
+	text_far _FellText
+	text_end
 
 PrintStatText:
 	ld hl, StatModTextStrings
@@ -923,18 +911,16 @@ SwitchAndTeleportEffect:
 	jp PrintText
 
 RanFromBattleText:
-	text "<USER>は　せんとうから"
-	line "りだつした！"
-	prompt
+	text_far _RanFromBattleText
+	text_end
 
 RanAwayScaredText:
-	text "<TARGET>は　おじけずいて"
-	line "にげだした！"
-	prompt
+	text_far _RanAwayScaredText
+	text_end
 
 WasBlownAwayText:
-	text "<TARGET>は　ふきとばされた！"
-	prompt
+	text_far _WasBlownAwayText
+	text_end
 
 TwoToFiveAttacksEffect:
 	ld hl, wPlayerBattleStatus1
@@ -1044,7 +1030,7 @@ ChargeEffect:
 	jp PrintText
 
 ChargeMoveEffectText:
-	text "<USER>@"
+	text_far _ChargeMoveEffectText
 	text_asm
 	ld a, [wChargeMoveNum]
 	cp RAZOR_WIND
@@ -1068,34 +1054,28 @@ ChargeMoveEffectText:
 	ret
 
 MadeWhirlwindText:
-	text "の　まわりで"
-	line "くうきが　うずを　まく！"
-	prompt
+	text_far _MadeWhirlwindText
+	text_end
 
 TookInSunlightText:
-	text "は"
-	line "ひかりを　きゅうしゅうした！"
-	prompt
+	text_far _TookInSunlightText
+	text_end
 
 LoweredItsHeadText:
-	text "は"
-	line "くびを　ひっこめた！"
-	prompt
+	text_far _LoweredItsHeadText
+	text_end
 
 SkyAttackGlowingText:
-	text "を"
-	line "はげしい　ひかりが　つつむ！"
-	prompt
+	text_far _SkyAttackGlowingText
+	text_end
 
 FlewUpHighText:
-	text "は"
-	line "そらたかく　とびあがった！"
-	prompt
+	text_far _FlewUpHighText
+	text_end
 
 DugAHoleText:
-	text "は"
-	line "あなをほって　ちちゅうに　もぐった！"
-	prompt
+	text_far _DugAHoleText
+	text_end
 
 TrappingEffect:
 	ld hl, wPlayerBattleStatus1
@@ -1172,9 +1152,8 @@ ConfusionSideEffectSuccess:
 	jp PrintText
 
 BecameConfusedText:
-	text "<TARGET>は"
-	line "こんらんした！"
-	prompt
+	text_far _BecameConfusedText
+	text_end
 
 ConfusionEffectFailed:
 	cp CONFUSION_SIDE_EFFECT
@@ -1294,11 +1273,8 @@ MimicEffect:
 	jp PrintButItFailedText_
 
 MimicLearnedMoveText:
-	text "<USER>は"
-	line "@"
-	text_ram wNameBuffer
-	text "を　おぼえた！"
-	prompt
+	text_far _MimicLearnedMoveText
+	text_end
 
 LeechSeedEffect:
 	jpfar LeechSeedEffect_
@@ -1391,11 +1367,8 @@ DisableEffect:
 	jp PrintButItFailedText_
 
 MoveWasDisabledText:
-	text "<TARGET>の"
-	line "@"
-	text_ram wNameBuffer
-	text "を　ふうじこめた！"
-	prompt
+	text_far _MoveWasDisabledText
+	text_end
 
 PayDayEffect:
 	jpfar PayDayEffect_
@@ -1416,16 +1389,16 @@ ReflectLightScreenEffect:
 	jpfar ReflectLightScreenEffect_
 
 NothingHappenedText:
-	text "しかし　こうかが　なかった！"
-	prompt
+	text_far _NothingHappenedText
+	text_end
 
 PrintNoEffectText:
 	ld hl, NoEffectText
 	jp PrintText
 
 NoEffectText:
-	text "しかし　なにもおこらない"
-	prompt
+	text_far _NoEffectText
+	text_end
 
 ConditionalPrintButItFailed:
 	ld a, [wMoveDidntMiss]
@@ -1437,31 +1410,28 @@ PrintButItFailedText_:
 	jp PrintText
 
 ButItFailedText:
-	text "しかし　うまく　きまらなかった！"
-	prompt
+	text_far _ButItFailedText
+	text_end
 
 PrintDidntAffectText:
 	ld hl, DidntAffectText
 	jp PrintText
 
 DidntAffectText:
-	text "しかし　<TARGET>には"
-	line "きかなかった！"
-	prompt
+	text_far _DidntAffectText
+	text_end
 
 IsUnaffectedText:
-	text "<TARGET>は"
-	line "へいきな　かおを　している！"
-	prompt
+	text_far _IsUnaffectedText
+	text_end
 
 PrintMayNotAttackText:
 	ld hl, ParalyzedMayNotAttackText
 	jp PrintText
 
 ParalyzedMayNotAttackText:
-	text "<TARGET>は　まひして"
-	line "わざが　でにくくなった！"
-	prompt
+	text_far _ParalyzedMayNotAttackText
+	text_end
 
 CheckTargetSubstitute:
 	push hl

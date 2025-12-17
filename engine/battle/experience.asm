@@ -340,8 +340,7 @@ BoostExp:
 	ret
 
 GainedText:
-	text_ram wNameBuffer
-	text "は@"
+	text_far _GainedText
 	text_asm
 	ld a, [wBoostExpByExpAll]
 	ld hl, WithExpAllText
@@ -355,26 +354,19 @@ GainedText:
 	ret
 
 WithExpAllText:
-	text "　がくしゅうそうちで@"
+	text_far _WithExpAllText
 	text_asm
 	ld hl, ExpPointsText
 	ret
 
 BoostedText:
-	text "　おおめに@"
+	text_far _BoostedText
 
 ExpPointsText:
-	text_start
-	line "@"
-	text_decimal wExpAmountGained, 2, 4
-	text "　けいけんちを　もらった！"
-	prompt
+	text_far _ExpPointsText
+	text_end
 
 GrewLevelText:
-	text_ram wNameBuffer
-	text "は"
-	line "レベル@"
-	text_decimal wCurEnemyLevel, 1, 3
-	text "　に　あがった！@"
+	text_far _GrewLevelText
 	sound_level_up
 	text_end

@@ -324,13 +324,8 @@ SwitchEnemyMon:
 	ret
 
 AIBattleWithdrawText:
-	text_ram wTrainerName
-	text "は"
-	line "@"
-	text_ram wEnemyMonNick
-	text "をひっこめた！"
-	prompt
-
+	text_far _AIBattleWithdrawText
+	text_end
 AIUseFullHeal:
 	call AIPlayRestoringSFX
 	call AICureStatus
@@ -453,11 +448,5 @@ AIPrintItemUse_:
 	jp PrintText
 
 AIBattleUseItemText:
-	text_ram wTrainerName
-	text "は　@"
-	text_ram wEnemyMonNick
-	text "に"
-	line "@"
-	text_ram wNameBuffer
-	text "を　つかった"
-	prompt
+	text_far _AIBattleUseItemText
+	text_end

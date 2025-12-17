@@ -18,6 +18,5 @@ FocusEnergyEffect_:
 
 GettingPumpedText:
 	text_pause
-	text "<USER>は"
-	line "はりきっている！"
-	prompt
+	text_far _GettingPumpedText
+	text_end

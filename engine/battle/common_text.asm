@@ -71,40 +71,28 @@ PrintBeginningBattleText:
 	ret
 
 WildMonAppearedText:
-	text "あ！　やせいの"
-	line "@"
-	text_ram wEnemyMonNick
-	text "が　とびだしてきた！"
-	prompt
+	text_far _WildMonAppearedText
+	text_end
 
 HookedMonAttackedText:
-	text "つりあげた　@"
-	text_ram wEnemyMonNick
-	text "が"
-	line "とびかかってきた！"
-	prompt
+	text_far _HookedMonAttackedText
+	text_end
 
 EnemyAppearedText:
-	text_ram wEnemyMonNick
-	text "が　"
-	line "あらわれた！"
-	prompt
+	text_far _EnemyAppearedText
+	text_end
 
 TrainerWantsToFightText:
-	text_ram wTrainerName
-	text "が"
-	line "しょうぶを　しかけてきた！"
-	prompt
+	text_far _TrainerWantsToFightText
+	text_end
 
 UnveiledGhostText:
-	text "シルフスコープが　ゆうれいの"
-	line "しょうたいを　みやぶった！"
-	prompt
+	text_far _UnveiledGhostText
+	text_end
 
 GhostCantBeIDdText:
-	text "だめだ！　ゆうれい　#の"
-	line "しょうたいが　わからない！"
-	prompt
+	text_far _GhostCantBeIDdText
+	text_end
 
 PrintSendOutMonMessage:
 	ld hl, wEnemyMonHP
@@ -150,23 +138,22 @@ PrintSendOutMonMessage:
 	jp PrintText
 
 GoText:
-	text "ゆけっ！　@"
+	text_far _GoText
 	text_asm
 	jr PrintPlayerMon1Text
 
 DoItText:
-	text "いってこい！　@"
+	text_far _DoItText
 	text_asm
 	jr PrintPlayerMon1Text
 
 GetmText:
-	text "がんばれ！　@"
+	text_far _GetmText
 	text_asm
 	jr PrintPlayerMon1Text
 
 EnemysWeakText:
-	text "あいてが　よわっている！"
-	line "チャンスだ！　@"
+	text_far _EnemysWeakText
 	text_asm
 
 PrintPlayerMon1Text:
@@ -174,17 +161,15 @@ PrintPlayerMon1Text:
 	ret
 
 PlayerMon1Text:
-	text_ram wBattleMonNick
-	text "！"
-	done
+	text_far _PlayerMon1Text
+	text_end
 
 RetreatMon:
 	ld hl, PlayerMon2Text
 	jp PrintText
 
 PlayerMon2Text:
-	text_ram wBattleMonNick
-	text "　@"
+	text_far _PlayerMon2Text
 	text_asm
 	push de
 	push bc
@@ -235,17 +220,17 @@ PlayerMon2Text:
 	ret
 
 EnoughText:
-	text "もういい！@"
+	text_far _EnoughText
 	text_asm
 	jr PrintComeBackText
 
 OKExclamationText:
-	text "いいぞ！@"
+	text_far _OKExclamationText
 	text_asm
 	jr PrintComeBackText
 
 GoodText:
-	text "よくやった！@"
+	text_far _GoodText
 	text_asm
 	jr PrintComeBackText
 
@@ -254,6 +239,5 @@ PrintComeBackText:
 	ret
 
 ComeBackText:
-	text_start
-	line "もどれ！"
-	done
+	text_far _ComeBackText
+	text_end

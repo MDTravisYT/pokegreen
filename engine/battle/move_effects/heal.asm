@@ -108,16 +108,13 @@ HealEffect_:
 	jp EffectCallBattleCore
 
 StartedSleepingEffect:
-	text "<USER>は"
-	line "ねむりはじめた！"
-	done
+	text_far _StartedSleepingEffect
+	text_end
 
 FellAsleepBecameHealthyText:
-	text "<USER>は　けんこうになって"
-	line "ねむりはじめた！"
-	done
+	text_far _FellAsleepBecameHealthyText
+	text_end
 
 RegainedHealthText:
-	text "<USER>は　たいりょくを"
-	line "かいふくした！"
-	prompt
+	text_far _RegainedHealthText
+	text_end
