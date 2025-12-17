@@ -582,65 +582,44 @@ ItemUseBall:
 ItemUseBallText00:
 ;"It dodged the thrown ball!"
 ;"This pokemon can't be caught"
-	text "よけられた！"
-	line "こいつは　つかまりそうにないぞ！"
-	prompt
-
+	text_far _ItemUseBallText00
+	text_end
 ItemUseBallText01:
 ;"You missed the pokemon!"
-	text "#に"
-	line "うまく　あたらなかった！"
-	prompt
-
+	text_far _ItemUseBallText01
+	text_end
 ItemUseBallText02:
 ;"Darn! The pokemon broke free!"
-	text "ざんねん！　#が"
-	line "ボールから　でてしまった！"
-	prompt
-
+	text_far _ItemUseBallText02
+	text_end
 ItemUseBallText03:
 ;"Aww! It appeared to be caught!"
-	text "ああ！"
-	line "つかまえたと　おもったのに！"
-	prompt
-
+	text_far _ItemUseBallText03
+	text_end
 ItemUseBallText04:
 ;"Shoot! It was so close too!"
-	text "おしい！"
-	line "あと　ちょっとの　ところだったのに！"
-	prompt
-
+	text_far _ItemUseBallText04
+	text_end
 ItemUseBallText05:
 ;"All right! {MonName} was caught!"
 ;play sound
-	text "やったー！"
-	line "@"
-	text_ram wEnemyMonNick
-	text "を　つかまえたぞ！@"
+	text_far _ItemUseBallText05
 	sound_caught_mon
 	text_promptbutton
 	text_end
-
 ItemUseBallText07:
 ;"X was transferred to Bill's PC"
-	text_ram wBoxMonNicks
-	text "は　マサキの　ところへ"
-	line "てんそうされた！"
-	prompt
-
+	text_far _ItemUseBallText07
+	text_end
 ItemUseBallText08:
 ;"X was transferred to someone's PC"
-	text_ram wBoxMonNicks
-	text "は　だれかの　<PC>に"
-	line "てんそうされた！"
-	prompt
+	text_far _ItemUseBallText08
+	text_end
 
 ItemUseBallText06:
 ;"New DEX data will be added..."
 ;play sound
-	text_ram wEnemyMonNick
-	text "の　データが　あたらしく"
-	line "#ずかんに　セーブされます！@"
+	text_far _ItemUseBallText06
 	sound_dex_page_added
 	text_promptbutton
 	text_end
@@ -756,14 +735,12 @@ ItemUseSurfboard:
 	ret
 
 SurfingGotOnText:
-	text "<PLAYER>は　@"
-	text_ram wNameBuffer
-	text "にのった！"
-	prompt
+	text_far _SurfingGotOnText
+	text_end
 
 SurfingNoPlaceToGetOffText:
-	text "おりる　ばしょが　ない！"
-	prompt
+	text_far _SurfingNoPlaceToGetOffText
+	text_end
 
 ItemUsePokedex:
 	predef_jump ShowPokedexMenu
@@ -1406,16 +1383,12 @@ ItemUseMedicine:
 	jp RemoveUsedItem
 
 VitaminStatRoseText:
-	text_ram wNameBuffer
-	text "の　@"
-	text_ram wStringBuffer
-	text "の"
-	line "きそ　ポイントが　あがった！"
-	prompt
+	text_far _VitaminStatRoseText
+	text_end
 
 VitaminNoEffectText:
-	text "つかっても　こうかが　ないよ"
-	prompt
+	text_far _VitaminNoEffectText
+	text_end
 
 INCLUDE "data/battle/stat_names.asm"
 
@@ -1473,12 +1446,12 @@ BaitRockCommon:
 	jp DelayFrames
 
 ThrewBaitText:
-	text "<PLAYER>は　エサを　なげた！"
-	done
+	text_far _ThrewBaitText
+	text_end
 
 ThrewRockText:
-	text "<PLAYER>は　いしを　なげた！"
-	done
+	text_far _ThrewRockText
+	text_end
 
 ; indirectly used by DIG in StartMenu_Pokemon.dig
 ItemUseEscapeRope:
@@ -1776,20 +1749,15 @@ Route16SnorlaxFluteCoords:
 	db -1 ; end
 
 PlayedFluteNoEffectText:
-	text "#のふえを　ふいた！"
-
-	para "うーん！"
-	line "すばらしい　ねいろだ！"
-	prompt
+	text_far _PlayedFluteNoEffectText
+	text_end
 
 FluteWokeUpText:
-	text "すべての　#が"
-	line "めを　さました！"
-	prompt
+	text_far _FluteWokeUpText
+	text_end
 
 PlayedFluteHadEffectText:
-	text "<PLAYER>は"
-	line "#のふえを　ふいてみた！@"
+	text_far _PlayedFluteHadEffectText
 	text_promptbutton
 	text_asm
 	ld a, [wIsInBattle]
@@ -1817,11 +1785,8 @@ ItemUseCoinCase:
 	jp PrintText
 
 CoinCaseNumCoinsText:
-	text "あなたの　コイン"
-	line "@"
-	text_bcd wPlayerCoins, 2 | LEADING_ZEROES | LEFT_ALIGN
-	text "まい"
-	prompt
+	text_far _CoinCaseNumCoinsText
+	text_end
 
 ItemUseOldRod:
 	call FishingInit
@@ -1939,15 +1904,12 @@ ItemUseItemfinder:
 	jp PrintText
 
 ItemfinderFoundItemText:
-	text "おッ！"
-	line "マシンが　はんのう　してるぞ！"
-	cont "ちかくに　アイテムが　うまってる！"
-	prompt
+	text_far _ItemfinderFoundItemText
+	text_end
 
 ItemfinderFoundNothingText:
-	text "<⋯>　<⋯>　ふう！"
-	line "<⋯>　なんにも　はんのう　しない"
-	prompt
+	text_far _ItemfinderFoundNothingText
+	text_end
 
 ItemUsePPUp:
 	ld a, [wIsInBattle]
@@ -2127,31 +2089,24 @@ ItemUsePPRestore:
 	ret
 
 RaisePPWhichTechniqueText:
-	text "どのわざの"
-	line "ポイントをふやす？"
-	done
+	text_far _RaisePPWhichTechniqueText
+	text_end
 
 RestorePPWhichTechniqueText:
-	text "どのわざを"
-	line "かいふくする？"
-	done
+	text_far _RestorePPWhichTechniqueText
+	text_end
 
 PPMaxedOutText:
-	text_ram wStringBuffer
-	text "は　これいじょう"
-	line "ふやすことが　できません"
-	prompt
+	text_far _PPMaxedOutText
+	text_end
 
 PPIncreasedText:
-	text_ram wStringBuffer
-	text "の"
-	line "わざポイントが　ふえた！"
-	prompt
+	text_far _PPIncreasedText
+	text_end
 
 PPRestoredText:
-	text "わざポイントが"
-	line "かいふくした！"
-	prompt
+	text_far _PPRestoredText
+	text_end
 
 ; for items that can't be used from the Item menu
 UnusableItem:
@@ -2255,36 +2210,20 @@ ItemUseTMHM:
 	jp RemoveUsedItem
 
 BootedUpTMText:
-	text "<TM>を　きどうした！"
-	prompt
+	text_far _BootedUpTMText
+	text_end
 
 BootedUpHMText:
-	text "ひでんマシンを　きどうした！"
-	prompt
+	text_far _BootedUpHMText
+	text_end
 
 TeachMachineMoveText:
-	text "なかには　@"
-	text_ram wStringBuffer
-	text "が"
-	line "きろくされていた！"
-
-	para "@"
-	text_ram wStringBuffer
-	text "を"
-	line "#に　おぼえさせますか？"
-	done
+	text_far _TeachMachineMoveText
+	text_end
 
 MonCannotLearnMachineMoveText:
-	text_ram wNameBuffer
-	text "と　@"
-	text_ram wStringBuffer
-	text "は"
-	line "あいしょうが　わるかった！"
-
-	para "@"
-	text_ram wStringBuffer
-	text "は　おぼえられない！"
-	prompt
+	text_far _MonCannotLearnMachineMoveText
+	text_end
 
 PrintItemUseTextAndRemoveItem:
 	ld hl, ItemUseText00
@@ -2341,65 +2280,54 @@ ItemUseFailed:
 	jp PrintText
 
 ItemUseNotTimeText:
-	text "オーキドの　ことば<⋯>"
-	line "<PLAYER>よ！　こういうものには"
-	cont "つかいどきが　あるのじゃ！"
-	prompt
+	text_far _ItemUseNotTimeText
+	text_end
 
 ItemUseNotYoursToUseText:
-	text "たいせつな　あずかりものです！"
-	next "つかうことは　できません！"
-	prompt
+	text_far _ItemUseNotYoursToUseText
+	text_end
 
 ItemUseNoEffectText:
-	text "つかっても　こうかがないよ"
-	prompt
+	text_far _ItemUseNoEffectText
+	text_end
 
 ThrowBallAtTrainerMonText1:
-	text "<TRAINER>に　ボールを　はじかれた！"
-	prompt
+	text_far _ThrowBallAtTrainerMonText1
+	text_end
 
 ThrowBallAtTrainerMonText2:
-	text "ひとの　ものを　とったら　どろぼう！"
-	prompt
+	text_far _ThrowBallAtTrainerMonText2
+	text_end
 
 NoCyclingAllowedHereText:
-	text "ここでは　じてんしゃに"
-	next "のることは　できません"
-	prompt
+	text_far _NoCyclingAllowedHereText
+	text_end
 
 NoSurfingHereText:
-	text "ここでは@"
-	text_ram wNameBuffer
-	text "に"
-	line "のることは　できません"
-	prompt
+	text_far _NoSurfingHereText
+	text_end
 
 BoxFullCannotThrowBallText:
-	text "ボックスに　あずけている　#が"
-	line "いっぱいなので　つかえません！"
-	prompt
+	text_far _BoxFullCannotThrowBallText
+	text_end
 
 ItemUseText00:
-	text "<PLAYER>は@"
+	text_far _ItemUseText001
 	text_low
-	text_ram wStringBuffer
-	text "を　つかった！"
-	done
+	text_far _ItemUseText002
+	text_end
 
 GotOnBicycleText:
-	text "<PLAYER>は@"
+	text_far _GotOnBicycleText1
 	text_low
-	text_ram wStringBuffer
-	text "に　のった"
-	prompt
+	text_far _GotOnBicycleText2
+	text_end
 
 GotOffBicycleText:
-	text "<PLAYER>は@"
+	text_far _GotOffBicycleText1
 	text_low
-	text_ram wStringBuffer
-	text "から　おりた"
-	prompt
+	text_far _GotOffBicycleText2
+	text_end
 
 ; restores bonus PP (from PP Ups) when healing at a pokemon center
 ; also, when a PP Up is used, it increases the current PP by one PP Up bonus
@@ -2628,21 +2556,16 @@ TossItem_::
 	ret
 
 ThrewAwayItemText:
-	text_ram wNameBuffer
-	text "を"
-	line "すてました！"
-	prompt
+	text_far _ThrewAwayItemText
+	text_end
 
 IsItOKToTossItemText:
-	text_ram wStringBuffer
-	text "を　すてます"
-	line "ほんとに　よろしいですか？"
-	prompt
+	text_far _IsItOKToTossItemText
+	text_end
 
 TooImportantToTossText:
-	text "それは　とても　たいせつなモノです"
-	line "すてることは　できません！"
-	prompt
+	text_far _TooImportantToTossText
+	text_end
 
 ; checks if an item is a key item
 ; INPUT:
