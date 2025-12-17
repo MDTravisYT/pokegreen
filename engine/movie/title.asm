@@ -184,6 +184,11 @@ ENDC
 	and PAD_UP | PAD_SELECT | PAD_B
 	cp PAD_UP | PAD_SELECT | PAD_B
 	jp z, .doClearSaveDialogue
+IF DEF(_DEBUG)
+	ld a, b
+	bit B_PAD_SELECT, a
+	jp nz, DebugMenu
+ENDC
 	jp MainMenu
 
 .doClearSaveDialogue
@@ -354,7 +359,7 @@ IF DEF(_GREEN)
 ENDC
 
 DebugNewGamePlayerName:
-	db "やまぐち@"
+	db "You@"
 
 DebugNewGameRivalName:
-	db "いしはら@"
+	db "He@"

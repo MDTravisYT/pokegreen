@@ -33,7 +33,6 @@ ROM0
 	"Header"
 	org $150
 	"Home"
-;	"Garbage 0"
 ROMX $1
 	"bank1"
 	"Garbage 1"

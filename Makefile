@@ -1,6 +1,7 @@
 roms := \
 	pokered.gb \
 	pokegreen.gb \
+	pokegreen_db.gb \
 	pokered11.gb \
 	pokegreen11.gb
 patches := \
@@ -21,6 +22,7 @@ rom_obj := \
 
 pokered_obj        := $(rom_obj:.o=_red.o)
 pokegreen_obj      := $(rom_obj:.o=_green.o)
+pokegreen_db_obj    := $(rom_obj:.o=_green_db.o)
 pokered11_obj      := $(rom_obj:.o=_red11.o)
 pokegreen11_obj    := $(rom_obj:.o=_green11.o)
 pokered11_vc_obj   := $(rom_obj:.o=_red11_vc.o)
@@ -57,6 +59,7 @@ RGBGFXFLAGS  ?= -Weverything
 	all \
 	red \
 	green \
+	green_db \
 	red11 \
 	green11 \
 	red11_vc \
@@ -69,6 +72,7 @@ RGBGFXFLAGS  ?= -Weverything
 all: $(roms)
 red:        pokered.gb
 green:      pokegreen.gb
+green_db:   pokegreen_db.gb
 red11:      pokered11.gb
 green11:    pokegreen11.gb
 red11_vc:   pokered11.patch
@@ -92,6 +96,7 @@ tidy:
 	      $(patches:%.patch=vc/%.constants.sym) \
 	      $(pokered_obj) \
 	      $(pokegreen_obj) \
+	      $(pokegreen_db_obj) \
 	      $(pokered11_obj) \
 	      $(pokegreen11_obj) \
 	      $(pokered11_vc_obj) \
@@ -114,6 +119,7 @@ endif
 
 $(pokered_obj):        RGBASMFLAGS += -D _RED -D _REV0
 $(pokegreen_obj):      RGBASMFLAGS += -D _GREEN -D _REV0
+$(pokegreen_db_obj):    RGBASMFLAGS += -D _GREEN -D _REV0 -D _DEBUG
 $(pokered11_obj):      RGBASMFLAGS += -D _RED -D _REV1
 $(pokegreen11_obj):    RGBASMFLAGS += -D _GREEN -D _REV1
 $(pokered11_vc_obj):   RGBASMFLAGS += -D _RED -D _REV1 -D _RED_VC
@@ -143,6 +149,7 @@ endef
 # Dependencies for objects (drop _red and _green from asm file basenames)
 $(foreach obj, $(pokered_obj), $(eval $(call DEP,$(obj),$(obj:_red.o=.asm))))
 $(foreach obj, $(pokegreen_obj), $(eval $(call DEP,$(obj),$(obj:_green.o=.asm))))
+$(foreach obj, $(pokegreen_db_obj), $(eval $(call DEP,$(obj),$(obj:_green_db.o=.asm))))
 $(foreach obj, $(pokered11_obj), $(eval $(call DEP,$(obj),$(obj:_red11.o=.asm))))
 $(foreach obj, $(pokegreen11_obj), $(eval $(call DEP,$(obj),$(obj:_green11.o=.asm))))
 $(foreach obj, $(pokered11_vc_obj), $(eval $(call DEP,$(obj),$(obj:_red11_vc.o=.asm))))
@@ -156,6 +163,7 @@ RGBLINKFLAGS += -d -p 0
 RGBFIXFLAGS += -jsv -k 01 -l 0x33 -m MBC3+RAM+BATTERY -r 03 
 pokered.gb:        RGBFIXFLAGS += -n 0 -t "POKEMON RED"
 pokegreen.gb:      RGBFIXFLAGS += -n 0 -t "POKEMON GREEN"
+pokegreen_db.gb:    RGBFIXFLAGS += -n 1 -t "POKEMON GREEN"
 pokered11.gb:      RGBFIXFLAGS += -n 1 -t "POKEMON RED"
 pokegreen11.gb:    RGBFIXFLAGS += -n 1 -t "POKEMON GREEN"
 pokered11_vc.gb:   RGBFIXFLAGS += -n 1 -t "POKEMON RED"
