@@ -397,49 +397,20 @@ Route22Rival1Text:
 	jp TextScriptEnd
 
 Route22RivalBeforeBattleText1:
-	text "<RIVAL>『あーッ！　<PLAYER>！"
-
-	para "#　リーグに　いくのか？"
-	line "やめとけ！"
-
-	para "おまえ　どうせ"
-	line "バッジ　もってねーだろ？"
-
-	para "みはりの　おっさんが"
-	line "とおして　くれねーよ！"
-
-	para "<⋯>　それよりさあ！"
-	line "おまえの　#"
-	cont "すこしは　つよく　なったかよ？"
-	done
+	text_far _Route22RivalBeforeBattleText1
+	text_end
 
 Route22RivalAfterBattleText1:
-	text "どうやら　#　リーグには"
-	line "つよくて　すごい　<TRAINER>が"
-	cont "ウジャウジャ　いるらしいぜ"
-
-	para "どうにか"
-	line "あそこを　とおりぬける"
-	cont "ほうほうを　かんがえなきゃな！"
-
-	para "おまえも　いつまでも"
-	line "ここらに　いないで"
-	cont "とっとと　さきに　すすめよ！"
-	done
+	text_far _Route22RivalAfterBattleText1
+	text_end
 
 Route22Rival1DefeatedText:
-	text "あーッ！"
-	line "こいつ　なめた　マネを！"
-	prompt
+	text_far _Route22Rival1DefeatedText
+	text_end
 
 Route22Rival1VictoryText:
-	text "<RIVAL>『なんだ？"
-	line "#　２ひきも"
-	cont "もってるの　なぜか　だって？"
-
-	para "おまえも"
-	line "つかまえれば　いい　じゃん！"
-	prompt
+	text_far _Route22Rival1VictoryText
+	text_end
 
 Route22Rival2Text:
 	text_asm
@@ -455,56 +426,22 @@ Route22Rival2Text:
 	jp TextScriptEnd
 
 Route22RivalBeforeBattleText2:
-	text "<RIVAL>『なんだ？　<PLAYER>！"
-	line "こんな　ところで　あうとは"
-	cont "またまた　ぐうぜんだ！"
-
-	para "じゃあ<⋯>　おまえも"
-	line "#　リーグに　いく　わけ？"
-
-	para "バッジも"
-	line "ぜんぶ　あつまったのか！"
-	cont "あ　そう<⋯>　やるじゃん！"
-
-	para "それじゃ　#　リーグ"
-	line "いくまえに　<PLAYER>で"
-	cont "ウォーミング　アップと　いくか！"
-
-	para "かかって　きな！"
-	done
+	text_far _Route22RivalBeforeBattleText2
+	text_end
 
 Route22RivalAfterBattleText2:
-	text "からだも　ほぐれたし<⋯>！"
-	line "いよいよ　#　リーグ"
-	cont "せいはに　むかうと　するか！"
-
-	para "<PLAYER>は<⋯>"
-	line "もっと　れんしゅう　したほうが"
-	cont "いいんじゃないの！"
-
-	para "おっと！　おせっかい　だったか！"
-	line "とにかく<⋯>　おれは　さき　いくぜ"
-	cont "じゃあ！<⋯>　あーばよ！"
-	done
+	text_far _Route22RivalAfterBattleText2
+	text_end
 
 Route22Rival2DefeatedText:
-	text "あ　こら！"
-
-	para "おれが　ちょっと"
-	line "ゆだん　した　すきに<⋯>　くそう！"
-	prompt
+	text_far _Route22Rival2DefeatedText
+	text_end
 
 Route22Rival2VictoryText:
-	text "<RIVAL>『ひゃははッ　<PLAYER>ー！"
-	line "それで　がんばってるのかよ！"
-	cont "おれの　さいのうに　くらべりゃ"
-	cont "<PLAYER>は　まだまだ　だな！"
-
-	para "もっと　れんしゅう　こいよ！"
-	line "あははーッ！"
-	prompt
+	text_far _Route22Rival2VictoryText
+	text_end
 
 Route22PokemonLeagueSignText:
-	text "ここは　#　リーグ"
-	line "しょうめん　ゲート"
-	done
+	text_far _Route22PokemonLeagueSignText
+	text_end
+
