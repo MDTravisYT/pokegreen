@@ -241,73 +241,63 @@ PlayerPCToss:
 	jp .loop
 
 PlayersPCMenuEntries:
-	db   "どうぐを　ひきだす"
-	next "どうぐを　あずける"
-	next "どうぐを　すてる"
-	next "スイッチを　きる@"
+	db   "WITHDRAW ITEM"
+	next "DEPOSIT ITEM"
+	next "TOSS ITEM"
+	next "LOG OFF@"
 
 TurnedOnPC2Text:
-	text "<PLAYER>は"
-	line "<PC>の　スイッチを　いれた！"
-	prompt
+	text_far _TurnedOnPC2Text
+	text_end
 
 WhatDoYouWantText:
-	text "なにを　しますか？"
-	done
+	text_far _WhatDoYouWantText
+	text_end
 
 WhatToDepositText:
-	text "なにを　あずけますか？"
-	done
+	text_far _WhatToDepositText
+	text_end
 
 DepositHowManyText:
-	text "いくつ　あずけますか？"
-	done
+	text_far _DepositHowManyText
+	text_end
 
 ItemWasStoredText:
-	text "<PC>つうしんで"
-	line "@"
-	text_ram wNameBuffer
-	text "を　あずけた！"
-	prompt
+	text_far _ItemWasStoredText
+	text_end
 
 NothingToDepositText:
-	text "あずけられる　どうぐを"
-	line "もっていません！"
-	prompt
+	text_far _NothingToDepositText
+	text_end
 
 NoRoomToStoreText:
-	text "どうぐが　いっぱいです"
-	line "もう　あずけられません！"
-	prompt
+	text_far _NoRoomToStoreText
+	text_end
 
 WhatToWithdrawText:
-	text "なにを　ひきだしますか？"
-	done
+	text_far _WhatToWithdrawText
+	text_end
 
 WithdrawHowManyText:
-	text "いくつ　ひきだしますか？"
-	done
+	text_far _WithdrawHowManyText
+	text_end
 
 WithdrewItemText:
-	text "<PC>つうしんで"
-	line "@"
-	text_ram wNameBuffer
-	text "を　ひきだした！"
-	prompt
+	text_far _WithdrewItemText
+	text_end
 
 NothingStoredText:
-	text "なにも　あずけていません！"
-	prompt
+	text_far _NothingStoredText
+	text_end
 
 CantCarryMoreText:
-	text "どうぐが　いっぱいです"
-	line "もう　もてません！"
-	prompt
+	text_far _CantCarryMoreText
+	text_end
 
 WhatToTossText:
-	text "なにを　すてますか？"
-	done
+	text_far _WhatToTossText
+	text_end
 
 TossHowManyText:
-	text "いくつ　すてますか？"
-	done
+	text_far _TossHowManyText
+	text_end

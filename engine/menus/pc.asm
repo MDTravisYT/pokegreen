@@ -99,30 +99,20 @@ LogOff:
 	ret
 
 TurnedOnPC1Text:
-	text "<PLAYER>は"
-	line "<PC>の　スイッチを　いれた！"
-	prompt
+	text_far _TurnedOnPC1Text
+	text_end
 
 AccessedBillsPCText:
-	text "マサキの　<PC>と　つないだ！"
-
-	para "#の　あずかり　システムを　"
-	line "よびだした！"
-	prompt
+	text_far _AccessedBillsPCText
+	text_end
 
 AccessedSomeonesPCText:
-	text "だれかの　<PC>と　つないだ！"
-
-	para "#の　あずかり　システムを　"
-	line "よびだした！"
-	prompt
+	text_far _AccessedSomeonesPCText
+	text_end
 
 AccessedMyPCText:
-	text "じぶんの　<PC>と　つないだ！"
-
-	para "どうぐの　あずかり　システムを　"
-	line "よびだした！"
-	prompt
+	text_far _AccessedMyPCText
+	text_end
 
 ; removes one of the specified item ID [hItemToRemoveID] from bag (if existent)
 RemoveItemByID::

@@ -85,12 +85,12 @@ DisplayPCMainMenu::
 	ldh [hAutoBGTransferEnabled], a
 	ret
 
-SomeonesPCText:   db "だれかの　<PC>@"
-BillsPCText:      db "マサキの　<PC>@"
-PlayersPCText:    db "の　<PC>@"
-OaksPCText:       db "オーキドの　<PC>@"
-PKMNLeaguePCText: db "ポケモン　リーグ@"
-LogOffPCText:     db "スイッチを　きる@"
+SomeonesPCText:   db "SOMEONE's PC@"
+BillsPCText:      db "BILL's PC@"
+PlayersPCText:    db "'s PC@"
+OaksPCText:       db "PROF.OAK's PC@"
+PKMNLeaguePCText: db "<PKMN>LEAGUE@"
+LogOffPCText:     db "LOG OFF@"
 
 BillsPC_::
 	ld hl, wStatusFlags5
@@ -320,14 +320,15 @@ DisplayMonListMenu:
 	ret
 
 BillsPCMenuText:
-	db   "#を　つれていく"
-	next "#を　あずける"
-	next "#を　にがす"
-	next "ボックスを　かえる"
-	next "さようなら@"
+	db   "WITHDRAW <PKMN>"
+	next "DEPOSIT <PKMN>"
+	next "RELEASE <PKMN>"
+	next "CHANGE BOX"
+	next "SEE YA!"
+	db "@"
 
 BoxNoPCText:
-	db "いまのボックス@"
+	db "BOX No.@"
 
 KnowsHMMove::
 ; returns whether mon with party index [wWhichPokemon] knows an HM move
@@ -425,85 +426,59 @@ DisplayDepositWithdrawMenu:
 	call LoadGBPal
 	jr .loop
 
-DepositPCText:  db "あずける@"
-WithdrawPCText: db "ひきとる@"
+DepositPCText:  db "DEPOSIT@"
+WithdrawPCText: db "WITHDRAW@"
 StatsCancelPCText:
-	db   "つよさをみる"
-	next "キャンセル@"
+	db   "STATS"
+	next "CANCEL@"
 
 SwitchOnText:
-	text "スイッチ　オン！"
-	prompt
+	text_far _SwitchOnText
+	text_end
 
 WhatText:
-	text "なんに　するん？"
-	done
+	text_far _WhatText
+	text_end
 
-DepositWhichMonText: ; unreferenced
-	text "どの　#を"
-	line "あずけたいんや？"
-	done
+DepositWhichMonText:
+	text_far _DepositWhichMonText
+	text_end
 
 MonWasStoredText:
-	text_ram wStringBuffer
-	text "を　ボックス@"
-	text_ram wBoxNumString
-	text "に"
-	line "あずけた！"
-	prompt
+	text_far _MonWasStoredText
+	text_end
 
 CantDepositLastMonText:
-	text "それ　あずけたら"
-	line "こまるん　ちゃう？"
-	prompt
+	text_far _CantDepositLastMonText
+	text_end
 
 BoxFullText:
-	text "あちゃ！　ウチは"
-	line "#で　いっぱいや"
-	prompt
+	text_far _BoxFullText
+	text_end
 
 MonIsTakenOutText:
-	text_ram wStringBuffer
-	text "を"
-	line "また　つれていく　ことにした！"
-	cont "@"
-	text_ram wStringBuffer
-	text "を　うけとった！"
-	prompt
+	text_far _MonIsTakenOutText
+	text_end
 
 NoMonText:
-	text "なに？"
-	line "ウチは　なんも　あずかっとらんで？"
-	prompt
+	text_far _NoMonText
+	text_end
 
 CantTakeMonText:
-	text "そんなん　いうても"
-	line "#　もちきれへんやんけ！"
+	text_far _CantTakeMonText
+	text_end
 
-	para "とりあえず　あずけるか　にがすか"
-	line "したら　ええんちゃう？"
-	prompt
-
-ReleaseWhichMonText: ; unreferenced
-	text "どの　#を"
-	line "にがすんや？"
-	done
+ReleaseWhichMonText:
+	text_far _ReleaseWhichMonText
+	text_end
 
 OnceReleasedText:
-	text "にがすと　@"
-	text_ram wStringBuffer
-	text "は"
-	line "もう　もどってこんで　ええんか？"
-	done
+	text_far _OnceReleasedText
+	text_end
 
 MonWasReleasedText:
-	text_ram wStringBuffer
-	text "を"
-	line "そとに　にがして　あげた！"
-	cont "ばいばい　@"
-	text_ram wStringBuffer
-	text "！"
-	prompt
+	text_far _MonWasReleasedText
+	text_end
 
 CableClubLeftGameboy::
 	ldh a, [hSerialConnectionStatus]
@@ -540,8 +515,8 @@ CableClubRightGameboy::
 	tx_pre_jump JustAMomentText
 
 JustAMomentText::
-	text "ちょっと　まってね"
-	done
+	text_far _JustAMomentText
+	text_end
 
 UnusedOpenBillsPC: ; unreferenced
 	ld a, [wSpritePlayerStateData1FacingDirection]
