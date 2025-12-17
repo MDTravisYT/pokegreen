@@ -3810,9 +3810,7 @@ PrintMoveAndSentenceEnd:
 	ret
 
 MoveAndSentenceEndText:
-	text_start
-	line "@"
-	text_ram wStringBuffer
+	text_far _MoveNameText
 	text_asm
 	ld hl, SentenceEndPointerTable
 	ld a, [wMoveGrammar] ; sentence end num
