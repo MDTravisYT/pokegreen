@@ -61,13 +61,13 @@ IF DEF(_REV1)
 ENDC
 
 
-SECTION "Garbage 4", ROMX
-IF DEF(_REV0)
-	db $00, $0D, $35, $41, $00
-ENDC
-IF DEF(_REV1)
-	db $00, $EF, $00, $FF, $14
-ENDC
+;SECTION "Garbage 4", ROMX
+;IF DEF(_REV0)
+;	db $00, $0D, $35, $41, $00
+;ENDC
+;IF DEF(_REV1)
+;	db $00, $EF, $00, $FF, $14
+;ENDC
 
 
 SECTION "Garbage 5", ROMX

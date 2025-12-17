@@ -1,7 +1,6 @@
 SECTION "bank1", ROMX
 
 INCLUDE "data/sprites/facings.asm"
-INCLUDE "data/pokemon/mew.asm"
 INCLUDE "data/items/prices.asm"
 INCLUDE "data/items/names.asm"
 INCLUDE "data/text/unused_names.asm"
@@ -37,6 +36,10 @@ INCLUDE "engine/battle/move_effects/drain_hp.asm"
 INCLUDE "engine/menus/players_pc.asm"
 INCLUDE "engine/pokemon/remove_mon.asm"
 INCLUDE "engine/events/display_pokedex.asm"
+
+SECTION "Mew", ROMX
+
+INCLUDE "data/pokemon/mew.asm"
 
 
 SECTION "bank3", ROMX
