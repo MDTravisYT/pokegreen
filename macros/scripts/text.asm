@@ -2,14 +2,6 @@ MACRO text
 	db TX_START, \# ; Start writing text
 ENDM
 
-MACRO _cnt
-	db "<_CONT>", \# ; Scroll to the next line
-ENDM
-
-MACRO scrl
-	db "<SCROLL>", \# ; Scroll to the next line, without pausing
-ENDM
-
 MACRO next
 	db "<NEXT>", \# ; Move a line down
 ENDM
@@ -180,6 +172,7 @@ MACRO text_far
 	db TX_FAR
 	dab \1 ; address of text commands
 ENDM
+
 
 	const_next $50
 

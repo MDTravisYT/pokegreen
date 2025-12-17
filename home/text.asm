@@ -5,9 +5,9 @@ TextBoxBorder::
 	push hl
 	ld a, '┌'
 	ld [hli], a
-	inc a ; '─'
+	inc a ; "─"
 	call .PlaceChars
-	inc a ; '┐'
+	inc a ; "┐"
 	ld [hl], a
 	pop hl
 
@@ -19,7 +19,7 @@ TextBoxBorder::
 	push hl
 	ld a, '│'
 	ld [hli], a
-	ld a, '　'
+	ld a, ' '
 	call .PlaceChars
 	ld [hl], '│'
 	pop hl
@@ -82,6 +82,7 @@ PlaceNextChar::
 	dict '<SCROLL>',  _ContTextNoPause
 	dict '<_CONT>',   _ContText
 	dict '<PARA>',    Paragraph
+	dict '<PAGE>',    PageChar
 	dict '<PLAYER>',  PrintPlayerName
 	dict '<RIVAL>',   PrintRivalName
 	dict '#',         PlacePOKe
@@ -90,78 +91,14 @@ PlaceNextChar::
 	dict '<TM>',      TMChar
 	dict '<TRAINER>', TrainerChar
 	dict '<CONT>',    ContText
-	dict '<⋯>',      SixDotsChar
+	dict '<……>',      SixDotsChar
 	dict '<DONE>',    DoneText
 	dict '<PROMPT>',  PromptText
+	dict '<PKMN>',    PlacePKMN
+	dict '<DEXEND>',  PlaceDexEnd
 	dict '<TARGET>',  PlaceMoveTargetsName
 	dict '<USER>',    PlaceMoveUsersName
 
-; Japanese diacritic symbols. The code up to .KanaCharacter does not appear
-; to be used, since the naming screen characters are loaded as tile indexes,
-; and ROM/RAM text strings use control characters for diacritic kana.
-	cp '゜' ; handakuten
-	jr z, .PlaceDiacriticSymbol
-	cp '゛' ; dakuten
-	jr nz, .KanaCharacter
-
-.PlaceDiacriticSymbol
-	push hl
-	ld bc, -SCREEN_WIDTH ; one line above
-	add hl, bc
-	ld [hl], a
-	pop hl
-	jr NextChar
-
-.KanaCharacter
-	cp FIRST_REGULAR_TEXT_CHAR
-	jr nc, .RegularKana
-; dakuten or handakuten
-	cp 'パ'
-	jr nc, .Handakuten
-; dakuten
-	cp FIRST_HIRAGANA_DAKUTEN_CHAR
-	jr nc, .HiraganaDakuten
-
-; katakana dakuten
-	add 'カ' - 'ガ'
-	jr .PlaceDakuten
-
-.HiraganaDakuten
-	add 'か' - 'が'
-
-.PlaceDakuten
-	push af
-	ld a, '゛' ; dakuten
-	push hl
-	ld bc, -SCREEN_WIDTH ; one line above
-	add hl, bc
-	ld [hl], a
-	pop hl
-	pop af
-	jr .RegularKana
-
-.Handakuten
-	cp 'ぱ'
-	jr nc, .HiraganaHandakuten
-
-; katakana handakuten
-	add 'ハ' - 'パ'
-	jr .PlaceHandakuten
-
-.HiraganaHandakuten
-	add 'は' - 'ぱ'
-
-.PlaceHandakuten
-	push af
-	ld a, '゜' ; handakuten
-	push hl
-	ld bc, -SCREEN_WIDTH ; one line above
-	add hl, bc
-	ld [hl], a
-	pop hl
-	pop af
-
-.RegularKana
 	ld [hli], a
 	call PrintLetterDelay
 
@@ -182,9 +119,8 @@ NullChar::
 	ret
 
 TextIDErrorText:: ; "[hTextID] ERROR."
-	text_decimal hTextID, 1, 2
-	text "エラー"
-	done
+	text_far _TextIDErrorText
+	text_end
 
 MACRO print_name
 	push de
@@ -201,6 +137,7 @@ PCChar::      print_name PCCharText
 RocketChar::  print_name RocketCharText
 PlacePOKe::   print_name PlacePOKeText
 SixDotsChar:: print_name SixDotsCharText
+PlacePKMN::   print_name PlacePKMNText
 
 PlaceMoveTargetsName::
 	ldh a, [hWhoseTurn]
@@ -234,13 +171,14 @@ PlaceCommandCharacter::
 	inc de
 	jp PlaceNextChar
 
-TMCharText::      db "わざマシン@"
-TrainerCharText:: db "トレーナー@"
-PCCharText::      db "パソコン@"
-RocketCharText::  db "ロケットだん@"
-PlacePOKeText::   db "ポケモン@"
-SixDotsCharText:: db "⋯⋯@"
-EnemyText::       db "てきの　@"
+TMCharText::      db "TM@"
+TrainerCharText:: db "TRAINER@"
+PCCharText::      db "PC@"
+RocketCharText::  db "ROCKET@"
+PlacePOKeText::   db "POKé@"
+SixDotsCharText:: db "……@"
+EnemyText::       db "Enemy @"
+PlacePKMNText::   db "<PK><MN>@"
 
 ContText::
 	push de
@@ -255,8 +193,13 @@ ContText::
 	jp PlaceNextChar
 
 ContCharText::
-	text "<_CONT>@"
+	text_far _ContCharText
 	text_end
+
+PlaceDexEnd::
+	ld [hl], '.'
+	pop hl
+	ret
 
 PromptText::
 	ld a, [wLinkState]
@@ -267,7 +210,7 @@ PromptText::
 .ok
 	call ProtectedDelay3
 	call ManualTextScroll
-	ld a, '　'
+	ld a, ' '
 	ldcoord_a 18, 16
 
 DoneText::
@@ -294,6 +237,23 @@ Paragraph::
 	hlcoord 1, 14
 	jp NextChar
 
+PageChar::
+	push de
+	ld a, '▼'
+	ldcoord_a 18, 16
+	call ProtectedDelay3
+	call ManualTextScroll
+	hlcoord 1, 10
+	lb bc, 7, 18
+	call ClearScreenArea
+	ld c, 20
+	call DelayFrames
+	pop de
+	pop hl
+	hlcoord 1, 11
+	push hl
+	jp NextChar
+
 _ContText::
 	ld a, '▼'
 	ldcoord_a 18, 16
@@ -301,7 +261,7 @@ _ContText::
 	push de
 	call ManualTextScroll
 	pop de
-	ld a, '　'
+	ld a, ' '
 	ldcoord_a 18, 16
 _ContTextNoPause::
 	push de
@@ -326,17 +286,19 @@ ScrollTextUpOneLine::
 	dec b
 	jr nz, .copyText
 	hlcoord 1, 16
-	ld a, '　'
+	ld a, ' '
 	ld b, SCREEN_WIDTH - 2
 .clearText
 	ld [hli], a
 	dec b
 	jr nz, .clearText
+
 	ld b, 5
 .WaitFrame
 	call DelayFrame
 	dec b
 	jr nz, .WaitFrame
+
 	ret
 
 ProtectedDelay3::
@@ -469,7 +431,7 @@ TextCommand_PROMPT_BUTTON::
 	push bc
 	call ManualTextScroll ; blink arrow and wait for A or B to be pressed
 	pop bc
-	ld a, '　'
+	ld a, ' '
 	ldcoord_a 18, 16 ; overwrite down arrow with blank space
 	pop hl
 	jp NextTextCommand
@@ -477,7 +439,7 @@ TextCommand_PROMPT_BUTTON::
 TextCommand_SCROLL::
 ; pushes text up two lines and sets the BC cursor to the border tile
 ; below the first character column of the text box.
-	ld a, '　'
+	ld a, ' '
 	ldcoord_a 18, 16 ; place blank space in lower right corner of dialogue text box
 	call ScrollTextUpOneLine
 	call ScrollTextUpOneLine
@@ -583,7 +545,7 @@ TextCommandSounds::
 	db TX_SOUND_CRY_DEWGONG,          DEWGONG  ; unused
 
 TextCommand_DOTS::
-; wait for button press or 30 frames while printing "⋯"s
+; wait for button press or 30 frames while printing "…"s
 	pop hl
 	ld a, [hli]
 	ld d, a
@@ -592,7 +554,7 @@ TextCommand_DOTS::
 	ld l, c
 
 .loop
-	ld a, '⋯'
+	ld a, '…'
 	ld [hli], a
 	push de
 	call Joypad
@@ -632,7 +594,7 @@ TextCommand_FAR::
 	ld a, [hli]
 
 	ldh [hLoadedROMBank], a
-	ld [MBC1RomBank], a
+	ld [rROMB], a
 
 	push hl
 	ld l, e
@@ -642,7 +604,7 @@ TextCommand_FAR::
 
 	pop af
 	ldh [hLoadedROMBank], a
-	ld [MBC1RomBank], a
+	ld [rROMB], a
 	jp NextTextCommand
 
 TextCommandJumpTable::
@@ -654,19 +616,15 @@ TextCommandJumpTable::
 	dw TextCommand_BOX           ; TX_BOX
 	dw TextCommand_LOW           ; TX_LOW
 	dw TextCommand_PROMPT_BUTTON ; TX_PROMPT_BUTTON
+IF DEF(_DEBUG)
+	dw _ContTextNoPause          ; TX_SCROLL
+ELSE
 	dw TextCommand_SCROLL        ; TX_SCROLL
+ENDC
 	dw TextCommand_START_ASM     ; TX_START_ASM
 	dw TextCommand_NUM           ; TX_NUM
 	dw TextCommand_PAUSE         ; TX_PAUSE
 	dw TextCommand_SOUND         ; TX_SOUND_GET_ITEM_1 (also handles other TX_SOUND_* commands)
 	dw TextCommand_DOTS          ; TX_DOTS
 	dw TextCommand_WAIT_BUTTON   ; TX_WAIT_BUTTON
-	dw TextCommand_SOUND         ; TX_SOUND_POKEDEX_RATING
-	dw TextCommand_SOUND         ; TX_SOUND_GET_ITEM_1_DUPLICATE
-	dw TextCommand_SOUND         ; TX_SOUND_GET_ITEM_2
-	dw TextCommand_SOUND         ; TX_SOUND_GET_KEY_ITEM
-	dw TextCommand_SOUND         ; TX_SOUND_CAUGHT_MON
-	dw TextCommand_SOUND         ; TX_SOUND_DEX_PAGE_ADDED
-	dw TextCommand_SOUND         ; TX_SOUND_CRY_NIDORINA
-	dw TextCommand_SOUND         ; TX_SOUND_CRY_PIDGEOT
-	dw TextCommand_SOUND         ; TX_SOUND_CRY_DEWGONG
+	; greater TX_* constants are handled directly by NextTextCommand

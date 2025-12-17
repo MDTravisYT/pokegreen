@@ -72,6 +72,7 @@
 	charmap "#",         $54 ; "ポケモン"
 	charmap "<CONT>",    $55
 	charmap "<⋯>",      $56 ; "⋯⋯"
+	charmap "<……>",      $56 ; "……"
 	charmap "<DONE>",    $57
 	charmap "<PROMPT>",  $58
 	charmap "<TARGET>",  $59 ; wBattleMonNick / "てきの　" wEnemyMonNick
@@ -111,6 +112,7 @@
 	charmap "』",  $73 ; closing quote
 	charmap "·",  $74 ; middle dot
 	charmap "⋯", $75 ; ellipsis
+	charmap "…",         $75 ; ellipsis
 
 	charmap "ぁ",  $76 ; Hiragana small "あ"
 	charmap "ぇ",  $77 ; Hiragana small "え"

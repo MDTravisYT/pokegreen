@@ -335,20 +335,17 @@ ENDC
 IF DEF(_REV0)
 .DataCorruptedText
 	text_ram wStringBuffer
-	text "の　データが"
-	line "こわれています！"
-	_cnt "でんげんを　きって"
-	scrl "やりなおしてください。"
+	text "DataCorruptedText"
 	done
 
 .MyString
-	db "じぶん@"
+	db "MyString@"
 .PartnersString
-	db "あいて@"
+	db "PartnersString@"
 ENDC
 
 PleaseWaitString:
-	db "つうしんじゅんびちゅう！@"
+	db "PLEASE WAIT!@"
 
 CallCurrentTradeCenterFunction:
 	ld hl, TradeCenterPointerTable
@@ -565,7 +562,7 @@ TradeCenter_SelectMon:
 	ld [wTradeCenterPointerTableIndex], a
 	jp CallCurrentTradeCenterFunction
 .statsTrade
-	db "ステイタスをみる　　こうかんにだす@"
+	db "STATS     TRADE@"
 .selectedCancelMenuItem
 	ld a, [wCurrentMenuItem]
 	ld b, a
@@ -641,7 +638,7 @@ TradeCenter_DrawCancelBox:
 	jp PlaceString
 
 CancelTextString:
-	db "こうかんちゅうし@"
+	db "CANCEL@"
 
 TradeCenter_PlaceSelectedEnemyMonMenuCursor:
 	ld a, [wSerialSyncAndExchangeNybbleReceiveData]
@@ -905,19 +902,15 @@ TradeCenter_Trade:
 	jp CallCurrentTradeCenterFunction
 
 WillBeTradedText:
-	text_ram wNameOfPlayerMonToBeTraded
-	text "　と　@"
-	text_ram wNameBuffer
-	text "　を"
-	line "こうかんします"
-	done
+	text_far _WillBeTradedText
+	text_end
 
 TradeCompleted:
-	db "こうかんしゅうりょう！@"
+	db "Trade completed!@"
 
 TradeCanceled:
-	db   "ざんねんながら"
-	next "こうかんは　キャンセルされました@"
+	db   "Too bad! The trade"
+	next "was canceled!@"
 
 TradeCenterPointerTable:
 	dw TradeCenter_SelectMon
