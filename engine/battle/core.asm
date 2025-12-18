@@ -2111,7 +2111,7 @@ DisplayBattleMenu::
 ; put cursor in left column for normal battle menu (i.e. when it's not a Safari battle)
 	ldcoord_a 15, 14 ; clear upper cursor position in right column
 	ldcoord_a 15, 16 ; clear lower cursor position in right column
-	ld b, $a ; top menu item X
+	ld b, $9 ; top menu item X
 	jr .leftColumn_WaitForInput
 .safariLeftColumn
 	ldcoord_a 12, 14
@@ -2142,8 +2142,8 @@ DisplayBattleMenu::
 	ld a, '　'
 	jr z, .safariRightColumn
 ; put cursor in right column for normal battle menu (i.e. when it's not a Safari battle)
-	ldcoord_a 10, 14 ; clear upper cursor position in left column
-	ldcoord_a 10, 16 ; clear lower cursor position in left column
+	ldcoord_a 9, 14 ; clear upper cursor position in left column
+	ldcoord_a 9, 16 ; clear lower cursor position in left column
 	ld b, $f ; top menu item X
 	jr .rightColumn_WaitForInput
 .safariRightColumn
@@ -2174,8 +2174,25 @@ DisplayBattleMenu::
 	ld [wCurrentMenuItem], a
 .AButtonPressed
 	call PlaceUnfilledArrowMenuCursor
+	ld a, [wBattleType]
+	cp BATTLE_TYPE_SAFARI
 	ld a, [wCurrentMenuItem]
 	ld [wBattleAndStartSavedMenuItem], a
+	jr z, .handleMenuSelection
+; not Safari battle
+; swap the IDs of the item menu and party menu (this is probably because they swapped the positions
+; of these menu items in first generation English versions)
+	cp $1 ; was the item menu selected?
+	jr nz, .notItemMenu
+; item menu was selected
+	inc a ; increment a to 2
+	jr .handleMenuSelection
+.notItemMenu
+	cp $2 ; was the party menu selected?
+	jr nz, .handleMenuSelection
+; party menu selected
+	dec a ; decrement a to 1
+.handleMenuSelection
 	and a
 	jr nz, .upperLeftMenuItemWasNotSelected
 ; the upper left menu item was selected

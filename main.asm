@@ -323,7 +323,6 @@ INCLUDE "engine/battle/decrement_pp.asm"
 
 SECTION "bank1C", ROMX
 
-INCLUDE "engine/movie/credits.asm"
 INCLUDE "engine/movie/splash.asm"
 INCLUDE "engine/movie/hall_of_fame.asm"
 INCLUDE "engine/overworld/healing_machine.asm"
@@ -335,6 +334,11 @@ INCLUDE "engine/gfx/mon_icons.asm"
 INCLUDE "engine/events/in_game_trades.asm"
 INCLUDE "engine/gfx/palettes.asm"
 INCLUDE "engine/menus/save.asm"
+
+
+SECTION "Credits", ROMX
+
+INCLUDE "engine/movie/credits.asm"
 
 
 SECTION "Itemfinder 1", ROMX
