@@ -24,6 +24,10 @@ PewterCityDefaultScript:
 PewterCityCheckPlayerLeavingEastScript:
 	CheckEvent EVENT_BEAT_BROCK
 	ret nz
+IF DEF(_DEBUG)
+	call DebugPressedOrHeldB
+	ret nz
+ENDC
 	ld hl, PewterCityPlayerLeavingEastCoords
 	call ArePlayerCoordsInArray
 	ret nc
@@ -195,23 +199,12 @@ PewterCity_TextPointers:
 	dw_const PewterCityYoungsterGoTakeOnBrockText, TEXT_PEWTERCITY_YOUNGSTER_GO_TAKE_ON_BROCK
 
 PewterCityCooltrainerFText:
-	text "ピッピって　つきから　きたって"
-	line "ウワサ　しってる？"
-
-	para "オツキミやまに"
-	line "つきのいしが　おちてから"
-	cont "みかける　ように　なったの"
-	done
+	text_far _PewterCityCooltrainerFText
+	text_end
 
 PewterCityCooltrainerMText:
-	text "ニビ　シティは"
-	line "むしとり　しょうねん　みたいに"
-	cont "ただの　しゅみで　#"
-	cont "やってる　やつ　ばかり！"
-
-	para "しかし　ニビ　#　ジムの"
-	line "タケシは　ちがうぜ"
-	done
+	text_far _PewterCityCooltrainerMText
+	text_end
 
 PewterCitySuperNerd1Text:
 	text_asm
@@ -244,28 +237,20 @@ PewterCitySuperNerd1Text:
 	jp TextScriptEnd
 
 .DidYouCheckOutMuseumText:
-	text "きみは　もう"
-	line "はくぶつかん　けんがくした？"
-	done
+	text_far _PewterCitySuperNerd1DidYouCheckOutMuseumText
+	text_end
 
 .WerentThoseFossilsAmazingText:
-	text "オツキミやま　で　みつかった"
-	line "カセキの　てんじ　すごかった！"
-	done
+	text_far _PewterCitySuperNerd1WerentThoseFossilsAmazingText
+	text_end
 
 .YouHaveToGoText:
-	text "え<⋯>！"
-	line "そりゃ　ぜったい"
-	cont "いった　ほうが　いい！"
-	done
+	text_far _PewterCitySuperNerd1YouHaveToGoText
+	text_end
 
 PewterCitySuperNerd1ItsRightHereText:
-	text "ここだよ！"
-	line "けんがくには"
-	cont "にゅうじょうりょうが　いるけど"
-	cont "じゃ<⋯>！"
-	cont "ぼくは　ここで！"
-	done
+	text_far _PewterCitySuperNerd1ItsRightHereText
+	text_end
 
 PewterCitySuperNerd2Text:
 	text_asm
@@ -285,21 +270,16 @@ PewterCitySuperNerd2Text:
 	jp TextScriptEnd
 
 .DoYouKnowWhatImDoingText:
-	text "シュー<⋯>！"
-	line "ぼくが"
-	cont "なに　やってるか　わかる？"
-	done
+	text_far _PewterCitySuperNerd2DoYouKnowWhatImDoingText
+	text_end
 
 .ThatsRightText:
-	text "そう<⋯>　それ！"
-	line "けっこう　ほねが　おれるよ"
-	done
+	text_far _PewterCitySuperNerd2ThatsRightText
+	text_end
 
 .ImSprayingRepelText:
-	text "かだんに　やせいの　#が"
-	line "はいらない　ように"
-	cont "むしよけスプレー　まいてるのさ"
-	done
+	text_far _PewterCitySuperNerd2ImSprayingRepelText
+	text_end
 
 PewterCityYoungsterText:
 	text_asm
@@ -320,48 +300,29 @@ PewterCityYoungsterText:
 	jp TextScriptEnd
 
 .YoureATrainerFollowMeText:
-	text "おまえ<⋯>！"
-	line "#　<TRAINER>　だろ？"
-	cont "タケシが　あいてを　さがしてる"
-	cont "<⋯>　こっちに　こい！"
-	done
+	text_far _PewterCityYoungsterYoureATrainerFollowMeText
+	text_end
 
 PewterCityYoungsterGoTakeOnBrockText:
-	text "かてる　じしんが　あるなら"
-	line "タケシと　たたかって　みなよ！"
-	done
+	text_far _PewterCityYoungsterGoTakeOnBrockText
+	text_end
 
 PewterCityTrainerTipsText:
-	text "<⋯>　おとくな　けいじばん！"
-
-	para "しょうぶの　とき"
-	line "ちょっとだけ　でも"
-	cont "かおを　だした　#は"
-	cont "けいけんちが　もらえる！"
-	done
+	text_far _PewterCityTrainerTipsText
+	text_end
 
 PewterCityPoliceNoticeSignText:
-	text "<⋯>　チラシが　はって　ある！"
-
-	para "さいきん　オツキミやまで"
-	line "きちょうな　#の"
-	cont "カセキを　ぬすみ　まくる"
-	cont "あくとうが　います！"
-	cont "あやしい　ひとを　みたら<⋯>！"
-	cont "<⋯>　ニビ　けいさつ　まで"
-	done
+	text_far _PewterCityPoliceNoticeSignText
+	text_end
 
 PewterCityMuseumSignText:
-	text "ニビ　かがく　はくぶつかん"
-	done
+	text_far _PewterCityMuseumSignText
+	text_end
 
 PewterCityGymSignText:
-	text "ニビシティ　#　ジム"
-	line "リーダー　タケシ"
-	cont "つよくて　かたい　いしの　おとこ"
-	done
+	text_far _PewterCityGymSignText
+	text_end
 
 PewterCitySignText:
-	text "ここは　ニビシティ"
-	line "ニビは　はいいろ　いしの　いろ"
-	done
+	text_far _PewterCitySignText
+	text_end

@@ -10,7 +10,6 @@ patches := \
 
 rom_obj := \
 	audio.o \
-	garbage.o \
 	home.o \
 	main.o \
 	maps.o \

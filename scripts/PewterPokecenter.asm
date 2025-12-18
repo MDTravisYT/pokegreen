@@ -13,13 +13,8 @@ PewterPokecenterNurseText:
 	script_pokecenter_nurse
 
 PewterPokecenterGentlemanText:
-	text "なに！？"
-
-	para "<ROCKET>が　オツキミやまで<⋯>"
-	line "<⋯>ん？　でんわ　してるんだ！"
-
-	para "じゃま　しないで　くれ！"
-	done
+	text_far _PewterPokecenterGentlemanText
+	text_end
 
 PewterPokecenterJigglypuffText:
 	text_asm
@@ -78,8 +73,8 @@ PewterPokecenterJigglypuffText:
 	jp TextScriptEnd
 
 .Text:
-	text "プリン『ぷうー　ぷぷうー"
-	done
+	text_far _PewterPokecenterJigglypuffText
+	text_end
 
 .FacingDirections:
 	db $30 | SPRITE_FACING_DOWN
