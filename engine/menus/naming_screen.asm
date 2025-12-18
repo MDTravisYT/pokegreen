@@ -50,10 +50,8 @@ AskName:
 	jp CopyData
 
 DoYouWantToNicknameText:
-	text_ram wNameBuffer
-	text "に"
-	line "ニックネームを　つけますか？"
-	done
+	text_far _DoYouWantToNicknameText
+	text_end
 
 DisplayNameRaterScreen::
 	ld hl, wBuffer
@@ -239,8 +237,16 @@ DisplayNamingScreen:
 	cp '゜'
 	ld de, Handakutens
 	jr z, .dakutensAndHandakutens
+	ld a, [wNamingScreenType]
+	cp NAME_MON_SCREEN
+	jr nc, .checkMonNameLength
+	ld a, [wNamingScreenNameLength]
+	cp PLAYER_NAME_LENGTH - 1
+	jr .checkNameLength
+.checkMonNameLength
 	ld a, [wNamingScreenNameLength]
 	cp NAME_LENGTH - 1
+.checkNameLength
 	jr c, .addLetter
 	ret
 
@@ -459,13 +465,13 @@ PrintNamingText:
 	jp PlaceString
 
 YourTextString:
-	db "あなた@"
+	db "YOUR @"
 
 RivalsTextString:
-	db "ライバル@"
+	db "RIVAL's @"
 
 NameTextString:
-	db "のなまえは？@"
+	db "NAME?@"
 
 NicknameTextString:
-	db "ニックネームは？@"
+	db "NICKNAME?@"

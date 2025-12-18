@@ -8,13 +8,9 @@ GetMonName::
 	ld a, [wNamedObjectIndex]
 	dec a
 	ld hl, MonsterNames
-	ld e, a
-	ld d, 0
-	add hl, de
-	add hl, de
-	add hl, de
-	add hl, de
-	add hl, de
+	ld c, NAME_LENGTH - 1
+	ld b, 0
+	call AddNTimes
 	ld de, wNameBuffer
 	push de
 	ld bc, NAME_LENGTH - 1

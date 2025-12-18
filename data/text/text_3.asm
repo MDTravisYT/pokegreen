@@ -1,6 +1,12 @@
 _FileDataDestroyedText::
-	text "The file data is"
-	line "destroyed!"
+;	text "The file data is"
+;	line "destroyed!"
+	
+	text "Looks like RAM"
+	line "got updated!"
+	
+	para "Save data version"
+	line "is outdated."
 	prompt
 
 _WouldYouLikeToSaveText::

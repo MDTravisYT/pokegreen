@@ -1,12 +1,12 @@
 MACRO npctrade
 ; give mon, get mon, dialog id, nickname
 	db \1, \2, \3
-	dname \4
+	dname \4, 5
 ENDM
 
 TradeMons:
 ; entries correspond to TRADE_FOR_* constants
-	table_width 3 + NAME_LENGTH - 1
+	table_width 3 + 6 - 1
 	npctrade NIDORINO,   NIDORINA,  TRADE_DIALOGSET_CASUAL, "テリー"
 	npctrade ABRA,       MR_MIME,   TRADE_DIALOGSET_CASUAL, "バリバリ"
 	npctrade BUTTERFREE, BEEDRILL,  TRADE_DIALOGSET_HAPPY,  "ピピん"   ; unused

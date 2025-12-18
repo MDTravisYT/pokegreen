@@ -26,9 +26,8 @@ TryLoadSaveFile:
 	ret
 
 FileDataDestroyedText:
-	text "フアイルの　データが"
-	line "こわれています！"
-	prompt
+	text_far _FileDataDestroyedText
+	text_end
 
 LoadMainData:
 	ld a, RAMG_SRAM_ENABLE
