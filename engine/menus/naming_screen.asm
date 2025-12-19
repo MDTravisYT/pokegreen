@@ -209,14 +209,14 @@ DisplayNamingScreen:
 
 .pressedA
 	ld a, [wCurrentMenuItem]
-	cp 6 ; "ED" row
+	cp $5 ; "ED" row
 	jr nz, .didNotPressED
 	ld a, [wTopMenuItemX]
 	cp $11 ; "ED" column
 	jr z, .pressedStart
 .didNotPressED
 	ld a, [wCurrentMenuItem]
-	cp $7 ; case switch row
+	cp $6 ; case switch row
 	jr nz, .didNotPressCaseSwitch
 	ld a, [wTopMenuItemX]
 	cp $1 ; case switch column
@@ -273,7 +273,7 @@ DisplayNamingScreen:
 	ret
 .pressedRight
 	ld a, [wCurrentMenuItem]
-	cp $7
+	cp $6
 	ret z ; can't scroll right on bottom row
 	ld a, [wTopMenuItemX]
 	cp $11 ; max
@@ -286,7 +286,7 @@ DisplayNamingScreen:
 	jr .done
 .pressedLeft
 	ld a, [wCurrentMenuItem]
-	cp $7
+	cp $6
 	ret z ; can't scroll right on bottom row
 	ld a, [wTopMenuItemX]
 	dec a
@@ -302,7 +302,7 @@ DisplayNamingScreen:
 	ld [wCurrentMenuItem], a
 	and a
 	ret nz
-	ld a, $7 ; wrap to bottom row
+	ld a, $6 ; wrap to bottom row
 	ld [wCurrentMenuItem], a
 	ld a, $1 ; force left column
 	jr .done
@@ -310,13 +310,13 @@ DisplayNamingScreen:
 	ld a, [wCurrentMenuItem]
 	inc a
 	ld [wCurrentMenuItem], a
-	cp $8
+	cp $7
 	jr nz, .wrapToTopRow
 	ld a, $1
 	ld [wCurrentMenuItem], a
 	jr .done
 .wrapToTopRow
-	cp $7
+	cp $6
 	ret nz
 	ld a, $1
 .done
@@ -340,12 +340,12 @@ PrintAlphabet:
 	ldh [hAutoBGTransferEnabled], a
 	ld a, [wAlphabetCase]
 	and a
-	ld de, HiraganaCharacters
+	ld de, LowerCaseAlphabet
 	jr nz, .lowercase
-	ld de, KatakanaCharacters
+	ld de, UpperCaseAlphabet
 .lowercase
 	hlcoord 2, 5
-	lb bc, 6, 9 ; 6 rows, 9 columns
+	lb bc, 5, 9 ; 5 rows, 9 columns
 .outerLoop
 	push bc
 .innerLoop
@@ -361,46 +361,65 @@ PrintAlphabet:
 	dec b
 	jr nz, .outerLoop
 	call PlaceString
-	hlcoord 5, 17
-	ld de, KanaInputText
-	call PlaceString
 	ld a, $1
 	ldh [hAutoBGTransferEnabled], a
 	jp Delay3
 
-INCLUDE "data/text/kana.asm"
+INCLUDE "data/text/alphabets.asm"
 
 PrintNicknameAndUnderscores:
 	call CalcStringLength
 	ld a, c
 	ld [wNamingScreenNameLength], a
-	hlcoord 13, 1
-	lb bc, 2, 5
+	hlcoord 10, 2
+	lb bc, 1, 10
 	call ClearScreenArea
-	hlcoord 13, 2
+	hlcoord 10, 2
 	ld de, wStringBuffer
 	call PlaceString
-	hlcoord 13, 3
+	hlcoord 10, 3
+	ld a, [wNamingScreenType]
+	cp NAME_MON_SCREEN
+	jr nc, .pokemon
+; player or rival
+	ld b, PLAYER_NAME_LENGTH - 1
+	jr .gotUnderscoreCount
+.pokemon
+	ld b, NAME_LENGTH - 1
+.gotUnderscoreCount
 	ld a, $76 ; underscore tile id
-	ld b, 5
 .placeUnderscoreLoop
 	ld [hli], a
 	dec b
 	jr nz, .placeUnderscoreLoop
+	ld a, [wNamingScreenType]
+	cp NAME_MON_SCREEN
 	ld a, [wNamingScreenNameLength]
+	jr nc, .pokemon2
+; player or rival
+	cp PLAYER_NAME_LENGTH - 1
+	jr .checkEmptySpaces
+.pokemon2
 	cp NAME_LENGTH - 1
-	jr nz, .emptySpacesRemaining
-; when all spaces are filled, force the cursor onto the ED tile
+.checkEmptySpaces
+	jr nz, .placeRaisedUnderscore ; jump if empty spaces remain
+	; when all spaces are filled, force the cursor onto the ED tile,
+	; and keep the last underscore raised
 	call EraseMenuCursor
 	ld a, $11 ; "ED" x coord
 	ld [wTopMenuItemX], a
-	ld a, $6 ; "ED" y coord
+	ld a, $5 ; "ED" y coord
 	ld [wCurrentMenuItem], a
-	ld a, 4 ; keep the last underscore raised
-.emptySpacesRemaining
-	hlcoord 13, 3
-	add l
-	ld l, a
+	ld a, [wNamingScreenType]
+	cp NAME_MON_SCREEN
+	ld a, NAME_LENGTH - 2
+	jr nc, .placeRaisedUnderscore
+	ld a, PLAYER_NAME_LENGTH - 2
+.placeRaisedUnderscore
+	ld c, a
+	ld b, $0
+	hlcoord 10, 3
+	add hl, bc
 	ld [hl], $77 ; raised underscore tile id
 	ret
 
@@ -433,7 +452,7 @@ CalcStringLength:
 	jr .loop
 
 PrintNamingText:
-	hlcoord 1, 2
+	hlcoord 0, 1
 	ld a, [wNamingScreenType]
 	ld de, YourTextString
 	and a
@@ -453,7 +472,7 @@ PrintNamingText:
 	ld hl, $1
 	add hl, bc
 	ld [hl], 'の'
-	hlcoord 4, 3
+	hlcoord 1, 3
 	ld de, NicknameTextString
 	jr .placeString
 .notNickname
