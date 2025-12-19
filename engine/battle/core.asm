@@ -1866,7 +1866,7 @@ DrawPlayerHUDAndHPBar:
 	hlcoord 18, 9
 	ld [hl], $73
 	ld de, wBattleMonNick
-	hlcoord 10, 8
+	hlcoord 10, 7
 	call CenterMonName
 	call PlaceString
 	push bc
@@ -1879,6 +1879,7 @@ DrawPlayerHUDAndHPBar:
 	ld bc, wBattleMonPP - wBattleMonLevel
 	call CopyData
 	pop hl
+	hlcoord 14, 8
 	push hl
 	inc hl
 	ld de, wLoadedMonStatus
@@ -1921,16 +1922,17 @@ DrawPlayerHUDAndHPBar:
 DrawEnemyHUDAndHPBar:
 	xor a
 	ldh [hAutoBGTransferEnabled], a
-	hlcoord 1, 0
-	lb bc, 4, 11
+	hlcoord 0, 0
+	lb bc, 4, 12
 	call ClearScreenArea
 	callfar PlaceEnemyHUDTiles
 	ld de, wEnemyMonNick
-	hlcoord 2, 1
+	hlcoord 1, 0
 	call CenterMonName
 	call PlaceString
 	ld h, b
 	ld l, c
+	hlcoord 4, 1
 	push hl
 	inc hl
 	ld de, wEnemyMonStatus
