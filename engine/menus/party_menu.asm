@@ -11,7 +11,7 @@ RedrawPartyMenu_::
 	jp z, .printMessage
 	call ErasePartyMenuCursors
 	farcall InitPartyMenuBlkPacket
-	hlcoord 3, 1
+	hlcoord 3, 0
 	ld de, wPartySpecies
 	xor a
 	ld c, a
@@ -62,15 +62,21 @@ RedrawPartyMenu_::
 	cp EVO_STONE_PARTY_MENU
 	jr z, .evolutionStoneMenu
 	push hl
-	ld bc, 5 - SCREEN_WIDTH ; 1 line up and 5 columns to the right
+	ld bc, 14 ; 14 columns to the right
 	add hl, bc
 	ld de, wLoadedMonStatus
 	call PrintStatusCondition
 	pop hl
 	push hl
-	ld bc, 8 - SCREEN_WIDTH ; 1 line up and 8 columns to the right
+	ld bc, SCREEN_WIDTH + 1 ; down 1 row and right 1 column
+	ldh a, [hUILayoutFlags]
+	set BIT_PARTY_MENU_HP_BAR, a
+	ldh [hUILayoutFlags], a
 	add hl, bc
 	predef DrawHP2 ; draw HP bar and prints current / max HP
+	ldh a, [hUILayoutFlags]
+	res BIT_PARTY_MENU_HP_BAR, a
+	ldh [hUILayoutFlags], a
 	call SetPartyMenuHPBarColor ; color the HP bar (on SGB)
 	pop hl
 	jr .printLevel
@@ -85,12 +91,12 @@ RedrawPartyMenu_::
 	ld de, .notAbleToLearnMoveText
 .placeMoveLearnabilityString
 	push hl
-	ld bc, 9 ; 9 columns to the right
+	ld bc, SCREEN_WIDTH + 9 ; 1 row down and 9 columns right
 	add hl, bc
 	call PlaceString
 	pop hl
 .printLevel
-	ld bc, 5 ; 5 columns to the right
+	ld bc, 10 ; move 10 columns to the right
 	add hl, bc
 	call PrintLevel
 	pop hl
@@ -153,7 +159,7 @@ RedrawPartyMenu_::
 .placeEvolutionStoneString
 	pop hl
 	push hl
-	ld bc, 9 ; 9 columns to the right
+	ld bc, 20 + 9 ; down 1 row and right 9 columns
 	add hl, bc
 	call PlaceString
 	pop hl

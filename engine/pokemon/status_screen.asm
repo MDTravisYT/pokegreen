@@ -40,7 +40,14 @@ DrawHP_:
 	push hl
 	call DrawHPBar
 	pop hl
+	ldh a, [hUILayoutFlags]
+	bit BIT_PARTY_MENU_HP_BAR, a
+	jr z, .printFractionBelowBar
+	ld bc, $9 ; right of bar
+	jr .printFraction
+.printFractionBelowBar
 	ld bc, SCREEN_WIDTH + 1 ; below bar
+.printFraction
 	add hl, bc
 	ld de, wLoadedMonHP
 	lb bc, 2, 3
