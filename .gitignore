@@ -26,3 +26,4 @@
 *.sa*
 *.sg1
 /flipscfg.bin
+/date.txt

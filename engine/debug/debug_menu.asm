@@ -27,6 +27,9 @@ IF DEF(_DEBUG)
 	hlcoord 7, 7
 	ld de, DebugMenuOptions
 	call PlaceString
+	hlcoord 0, 15
+	ld de, DateText
+	call PlaceString
 
 	ld a, TEXT_DELAY_MEDIUM
 	ld [wOptions], a

@@ -50,6 +50,9 @@ MainMenu:
 	ld de, NewGameText
 	call PlaceString
 .next2
+	hlcoord 0, 15
+	ld de, DateText
+	call PlaceString
 	ld hl, wStatusFlags5
 	res BIT_NO_TEXT_DELAY, [hl]
 	call UpdateSprites
@@ -353,6 +356,9 @@ CableClubOptionsText:
 	db   "TRADE CENTER"
 	next "COLOSSEUM"
 	next "CANCEL@"
+	
+DateText:
+	include "date.txt"
 
 DisplayContinueGameInfo:
 	xor a
