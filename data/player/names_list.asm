@@ -2,7 +2,7 @@
 
 DefaultNamesPlayerList:
 	db "NEW NAME@"
-	list_start
+	list_start NAME_LENGTH - 1
 FOR n, 1, NUM_PLAYER_NAMES + 1
 	li #PLAYERNAME{d:n}
 ENDR

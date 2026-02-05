@@ -416,6 +416,7 @@ PrintNicknameAndUnderscores:
 	jr nc, .placeRaisedUnderscore
 	ld a, PLAYER_NAME_LENGTH - 2
 .placeRaisedUnderscore
+
 	ld c, a
 	ld b, $0
 	hlcoord 10, 3
